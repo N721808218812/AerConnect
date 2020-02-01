@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6af272d679ce4724831e8284a6395e31" Name="Diagram1">
+        <EntityTypeShape EntityType="AvioKompanijaModel.CheckIn" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AvioKompanijaModel.Karta" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AvioKompanijaModel.Let" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AvioKompanijaModel.Leti" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AvioKompanijaModel.Ljubimac" Width="1.5" PointX="6" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AvioKompanijaModel.Putnik" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AvioKompanijaModel.Radnik" Width="1.5" PointX="5.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AvioKompanijaModel.Rezervacija" Width="1.5" PointX="3" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AvioKompanijaModel.Vlasnik" Width="1.5" PointX="3.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AvioKompanijaModel.Zalba" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <AssociationConnector Association="AvioKompanijaModel.FK_CheckIn_Karta" ManuallyRouted="false" />
+        <AssociationConnector Association="AvioKompanijaModel.FK_CheckIn_Putnik" ManuallyRouted="false" />
+        <AssociationConnector Association="AvioKompanijaModel.FK_Ljubimac_Karta" ManuallyRouted="false" />
+        <AssociationConnector Association="AvioKompanijaModel.FK_Rezervacija_Karta" ManuallyRouted="false" />
+        <AssociationConnector Association="AvioKompanijaModel.FK_Leti_Let" ManuallyRouted="false" />
+        <AssociationConnector Association="AvioKompanijaModel.FK_Leti_Putnik" ManuallyRouted="false" />
+        <AssociationConnector Association="AvioKompanijaModel.FK_Ljubimac_Vlasnik" ManuallyRouted="false" />
+        <AssociationConnector Association="AvioKompanijaModel.FK_Zalba_Putnik" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

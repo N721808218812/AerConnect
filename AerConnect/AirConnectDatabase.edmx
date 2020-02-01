@@ -1,0 +1,641 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AvioKompanijaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CheckIn">
+          <Key>
+            <PropertyRef Name="BrojCheckIn" />
+            <PropertyRef Name="SifraKarte" />
+            <PropertyRef Name="BrojPasosa" />
+          </Key>
+          <Property Name="BrojCheckIn" Type="int" Nullable="false" />
+          <Property Name="SifraKarte" Type="int" Nullable="false" />
+          <Property Name="BrojPasosa" Type="int" Nullable="false" />
+          <Property Name="Vreme" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Karta">
+          <Key>
+            <PropertyRef Name="SifraKarte" />
+          </Key>
+          <Property Name="SifraKarte" Type="int" Nullable="false" />
+          <Property Name="BrojKarte" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Let">
+          <Key>
+            <PropertyRef Name="SifraLeta" />
+          </Key>
+          <Property Name="SifraLeta" Type="int" Nullable="false" />
+          <Property Name="DestinacijaOd" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DestinacijaDo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DatumPolaska" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DatumPovratka" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Leti">
+          <Key>
+            <PropertyRef Name="SifraLeta" />
+            <PropertyRef Name="BrojPasosa" />
+          </Key>
+          <Property Name="SifraLeta" Type="int" Nullable="false" />
+          <Property Name="BrojPasosa" Type="int" Nullable="false" />
+          <Property Name="Vreme" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Datum" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ljubimac">
+          <Key>
+            <PropertyRef Name="BrojCipa" />
+            <PropertyRef Name="BrojPasosa" />
+            <PropertyRef Name="SifraKarte" />
+          </Key>
+          <Property Name="BrojCipa" Type="int" Nullable="false" />
+          <Property Name="BrojPasosa" Type="int" Nullable="false" />
+          <Property Name="SifraKarte" Type="int" Nullable="false" />
+          <Property Name="Ime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Rasa" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tezina" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Putnik">
+          <Key>
+            <PropertyRef Name="BrojPasosa" />
+          </Key>
+          <Property Name="BrojPasosa" Type="int" Nullable="false" />
+          <Property Name="Ime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Prezime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BrojTelefona" Type="int" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Radnik">
+          <Key>
+            <PropertyRef Name="RadnikID" />
+          </Key>
+          <Property Name="RadnikID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Prezime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rezervacija">
+          <Key>
+            <PropertyRef Name="SifraRezervacije" />
+            <PropertyRef Name="SifraKarte" />
+          </Key>
+          <Property Name="SifraRezervacije" Type="int" Nullable="false" />
+          <Property Name="SifraKarte" Type="int" Nullable="false" />
+          <Property Name="Vreme" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vlasnik">
+          <Key>
+            <PropertyRef Name="BrojPasosa" />
+          </Key>
+          <Property Name="BrojPasosa" Type="int" Nullable="false" />
+          <Property Name="Ime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Prezime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BrojTelefona" Type="int" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Zalba">
+          <Key>
+            <PropertyRef Name="SifraZalbe" />
+            <PropertyRef Name="BrojPasosa" />
+          </Key>
+          <Property Name="SifraZalbe" Type="int" Nullable="false" />
+          <Property Name="BrojPasosa" Type="int" Nullable="false" />
+          <Property Name="Komentar" Type="nvarchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CheckIn_Karta">
+          <End Role="Karta" Type="Self.Karta" Multiplicity="1" />
+          <End Role="CheckIn" Type="Self.CheckIn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Karta">
+              <PropertyRef Name="SifraKarte" />
+            </Principal>
+            <Dependent Role="CheckIn">
+              <PropertyRef Name="SifraKarte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CheckIn_Putnik">
+          <End Role="Putnik" Type="Self.Putnik" Multiplicity="1" />
+          <End Role="CheckIn" Type="Self.CheckIn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Putnik">
+              <PropertyRef Name="BrojPasosa" />
+            </Principal>
+            <Dependent Role="CheckIn">
+              <PropertyRef Name="BrojPasosa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Leti_Let">
+          <End Role="Let" Type="Self.Let" Multiplicity="1" />
+          <End Role="Leti" Type="Self.Leti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Let">
+              <PropertyRef Name="SifraLeta" />
+            </Principal>
+            <Dependent Role="Leti">
+              <PropertyRef Name="SifraLeta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Leti_Putnik">
+          <End Role="Putnik" Type="Self.Putnik" Multiplicity="1" />
+          <End Role="Leti" Type="Self.Leti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Putnik">
+              <PropertyRef Name="BrojPasosa" />
+            </Principal>
+            <Dependent Role="Leti">
+              <PropertyRef Name="BrojPasosa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ljubimac_Karta">
+          <End Role="Karta" Type="Self.Karta" Multiplicity="1" />
+          <End Role="Ljubimac" Type="Self.Ljubimac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Karta">
+              <PropertyRef Name="SifraKarte" />
+            </Principal>
+            <Dependent Role="Ljubimac">
+              <PropertyRef Name="SifraKarte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ljubimac_Vlasnik">
+          <End Role="Vlasnik" Type="Self.Vlasnik" Multiplicity="1" />
+          <End Role="Ljubimac" Type="Self.Ljubimac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vlasnik">
+              <PropertyRef Name="BrojPasosa" />
+            </Principal>
+            <Dependent Role="Ljubimac">
+              <PropertyRef Name="BrojPasosa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rezervacija_Karta">
+          <End Role="Karta" Type="Self.Karta" Multiplicity="1" />
+          <End Role="Rezervacija" Type="Self.Rezervacija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Karta">
+              <PropertyRef Name="SifraKarte" />
+            </Principal>
+            <Dependent Role="Rezervacija">
+              <PropertyRef Name="SifraKarte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zalba_Putnik">
+          <End Role="Putnik" Type="Self.Putnik" Multiplicity="1" />
+          <End Role="Zalba" Type="Self.Zalba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Putnik">
+              <PropertyRef Name="BrojPasosa" />
+            </Principal>
+            <Dependent Role="Zalba">
+              <PropertyRef Name="BrojPasosa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AvioKompanijaModelStoreContainer">
+          <EntitySet Name="CheckIn" EntityType="Self.CheckIn" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Karta" EntityType="Self.Karta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Let" EntityType="Self.Let" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Leti" EntityType="Self.Leti" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ljubimac" EntityType="Self.Ljubimac" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Putnik" EntityType="Self.Putnik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Radnik" EntityType="Self.Radnik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rezervacija" EntityType="Self.Rezervacija" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vlasnik" EntityType="Self.Vlasnik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zalba" EntityType="Self.Zalba" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CheckIn_Karta" Association="Self.FK_CheckIn_Karta">
+            <End Role="Karta" EntitySet="Karta" />
+            <End Role="CheckIn" EntitySet="CheckIn" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CheckIn_Putnik" Association="Self.FK_CheckIn_Putnik">
+            <End Role="Putnik" EntitySet="Putnik" />
+            <End Role="CheckIn" EntitySet="CheckIn" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Leti_Let" Association="Self.FK_Leti_Let">
+            <End Role="Let" EntitySet="Let" />
+            <End Role="Leti" EntitySet="Leti" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Leti_Putnik" Association="Self.FK_Leti_Putnik">
+            <End Role="Putnik" EntitySet="Putnik" />
+            <End Role="Leti" EntitySet="Leti" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ljubimac_Karta" Association="Self.FK_Ljubimac_Karta">
+            <End Role="Karta" EntitySet="Karta" />
+            <End Role="Ljubimac" EntitySet="Ljubimac" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ljubimac_Vlasnik" Association="Self.FK_Ljubimac_Vlasnik">
+            <End Role="Vlasnik" EntitySet="Vlasnik" />
+            <End Role="Ljubimac" EntitySet="Ljubimac" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rezervacija_Karta" Association="Self.FK_Rezervacija_Karta">
+            <End Role="Karta" EntitySet="Karta" />
+            <End Role="Rezervacija" EntitySet="Rezervacija" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zalba_Putnik" Association="Self.FK_Zalba_Putnik">
+            <End Role="Putnik" EntitySet="Putnik" />
+            <End Role="Zalba" EntitySet="Zalba" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AvioKompanijaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CheckIn">
+          <Key>
+            <PropertyRef Name="BrojCheckIn" />
+            <PropertyRef Name="SifraKarte" />
+            <PropertyRef Name="BrojPasosa" />
+          </Key>
+          <Property Name="BrojCheckIn" Type="Int32" Nullable="false" />
+          <Property Name="SifraKarte" Type="Int32" Nullable="false" />
+          <Property Name="BrojPasosa" Type="Int32" Nullable="false" />
+          <Property Name="Vreme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Karta" Relationship="Self.FK_CheckIn_Karta" FromRole="CheckIn" ToRole="Karta" />
+          <NavigationProperty Name="Putnik" Relationship="Self.FK_CheckIn_Putnik" FromRole="CheckIn" ToRole="Putnik" />
+        </EntityType>
+        <EntityType Name="Karta">
+          <Key>
+            <PropertyRef Name="SifraKarte" />
+          </Key>
+          <Property Name="SifraKarte" Type="Int32" Nullable="false" />
+          <Property Name="BrojKarte" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CheckIns" Relationship="Self.FK_CheckIn_Karta" FromRole="Karta" ToRole="CheckIn" />
+          <NavigationProperty Name="Ljubimacs" Relationship="Self.FK_Ljubimac_Karta" FromRole="Karta" ToRole="Ljubimac" />
+          <NavigationProperty Name="Rezervacijas" Relationship="Self.FK_Rezervacija_Karta" FromRole="Karta" ToRole="Rezervacija" />
+        </EntityType>
+        <EntityType Name="Let">
+          <Key>
+            <PropertyRef Name="SifraLeta" />
+          </Key>
+          <Property Name="SifraLeta" Type="Int32" Nullable="false" />
+          <Property Name="DestinacijaOd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DestinacijaDo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DatumPolaska" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DatumPovratka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Letis" Relationship="Self.FK_Leti_Let" FromRole="Let" ToRole="Leti" />
+        </EntityType>
+        <EntityType Name="Leti">
+          <Key>
+            <PropertyRef Name="SifraLeta" />
+            <PropertyRef Name="BrojPasosa" />
+          </Key>
+          <Property Name="SifraLeta" Type="Int32" Nullable="false" />
+          <Property Name="BrojPasosa" Type="Int32" Nullable="false" />
+          <Property Name="Vreme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Datum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Let" Relationship="Self.FK_Leti_Let" FromRole="Leti" ToRole="Let" />
+          <NavigationProperty Name="Putnik" Relationship="Self.FK_Leti_Putnik" FromRole="Leti" ToRole="Putnik" />
+        </EntityType>
+        <EntityType Name="Ljubimac">
+          <Key>
+            <PropertyRef Name="BrojCipa" />
+            <PropertyRef Name="BrojPasosa" />
+            <PropertyRef Name="SifraKarte" />
+          </Key>
+          <Property Name="BrojCipa" Type="Int32" Nullable="false" />
+          <Property Name="BrojPasosa" Type="Int32" Nullable="false" />
+          <Property Name="SifraKarte" Type="Int32" Nullable="false" />
+          <Property Name="Ime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Rasa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tezina" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Karta" Relationship="Self.FK_Ljubimac_Karta" FromRole="Ljubimac" ToRole="Karta" />
+          <NavigationProperty Name="Vlasnik" Relationship="Self.FK_Ljubimac_Vlasnik" FromRole="Ljubimac" ToRole="Vlasnik" />
+        </EntityType>
+        <EntityType Name="Putnik">
+          <Key>
+            <PropertyRef Name="BrojPasosa" />
+          </Key>
+          <Property Name="BrojPasosa" Type="Int32" Nullable="false" />
+          <Property Name="Ime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Prezime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BrojTelefona" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CheckIns" Relationship="Self.FK_CheckIn_Putnik" FromRole="Putnik" ToRole="CheckIn" />
+          <NavigationProperty Name="Letis" Relationship="Self.FK_Leti_Putnik" FromRole="Putnik" ToRole="Leti" />
+          <NavigationProperty Name="Zalbas" Relationship="Self.FK_Zalba_Putnik" FromRole="Putnik" ToRole="Zalba" />
+        </EntityType>
+        <EntityType Name="Radnik">
+          <Key>
+            <PropertyRef Name="RadnikID" />
+          </Key>
+          <Property Name="RadnikID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Prezime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rezervacija">
+          <Key>
+            <PropertyRef Name="SifraRezervacije" />
+            <PropertyRef Name="SifraKarte" />
+          </Key>
+          <Property Name="SifraRezervacije" Type="Int32" Nullable="false" />
+          <Property Name="SifraKarte" Type="Int32" Nullable="false" />
+          <Property Name="Vreme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Karta" Relationship="Self.FK_Rezervacija_Karta" FromRole="Rezervacija" ToRole="Karta" />
+        </EntityType>
+        <EntityType Name="Vlasnik">
+          <Key>
+            <PropertyRef Name="BrojPasosa" />
+          </Key>
+          <Property Name="BrojPasosa" Type="Int32" Nullable="false" />
+          <Property Name="Ime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Prezime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BrojTelefona" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Ljubimacs" Relationship="Self.FK_Ljubimac_Vlasnik" FromRole="Vlasnik" ToRole="Ljubimac" />
+        </EntityType>
+        <EntityType Name="Zalba">
+          <Key>
+            <PropertyRef Name="SifraZalbe" />
+            <PropertyRef Name="BrojPasosa" />
+          </Key>
+          <Property Name="SifraZalbe" Type="Int32" Nullable="false" />
+          <Property Name="BrojPasosa" Type="Int32" Nullable="false" />
+          <Property Name="Komentar" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Putnik" Relationship="Self.FK_Zalba_Putnik" FromRole="Zalba" ToRole="Putnik" />
+        </EntityType>
+        <Association Name="FK_CheckIn_Karta">
+          <End Role="Karta" Type="Self.Karta" Multiplicity="1" />
+          <End Role="CheckIn" Type="Self.CheckIn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Karta">
+              <PropertyRef Name="SifraKarte" />
+            </Principal>
+            <Dependent Role="CheckIn">
+              <PropertyRef Name="SifraKarte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CheckIn_Putnik">
+          <End Role="Putnik" Type="Self.Putnik" Multiplicity="1" />
+          <End Role="CheckIn" Type="Self.CheckIn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Putnik">
+              <PropertyRef Name="BrojPasosa" />
+            </Principal>
+            <Dependent Role="CheckIn">
+              <PropertyRef Name="BrojPasosa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ljubimac_Karta">
+          <End Role="Karta" Type="Self.Karta" Multiplicity="1" />
+          <End Role="Ljubimac" Type="Self.Ljubimac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Karta">
+              <PropertyRef Name="SifraKarte" />
+            </Principal>
+            <Dependent Role="Ljubimac">
+              <PropertyRef Name="SifraKarte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rezervacija_Karta">
+          <End Role="Karta" Type="Self.Karta" Multiplicity="1" />
+          <End Role="Rezervacija" Type="Self.Rezervacija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Karta">
+              <PropertyRef Name="SifraKarte" />
+            </Principal>
+            <Dependent Role="Rezervacija">
+              <PropertyRef Name="SifraKarte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Leti_Let">
+          <End Role="Let" Type="Self.Let" Multiplicity="1" />
+          <End Role="Leti" Type="Self.Leti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Let">
+              <PropertyRef Name="SifraLeta" />
+            </Principal>
+            <Dependent Role="Leti">
+              <PropertyRef Name="SifraLeta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Leti_Putnik">
+          <End Role="Putnik" Type="Self.Putnik" Multiplicity="1" />
+          <End Role="Leti" Type="Self.Leti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Putnik">
+              <PropertyRef Name="BrojPasosa" />
+            </Principal>
+            <Dependent Role="Leti">
+              <PropertyRef Name="BrojPasosa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ljubimac_Vlasnik">
+          <End Role="Vlasnik" Type="Self.Vlasnik" Multiplicity="1" />
+          <End Role="Ljubimac" Type="Self.Ljubimac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vlasnik">
+              <PropertyRef Name="BrojPasosa" />
+            </Principal>
+            <Dependent Role="Ljubimac">
+              <PropertyRef Name="BrojPasosa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zalba_Putnik">
+          <End Role="Putnik" Type="Self.Putnik" Multiplicity="1" />
+          <End Role="Zalba" Type="Self.Zalba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Putnik">
+              <PropertyRef Name="BrojPasosa" />
+            </Principal>
+            <Dependent Role="Zalba">
+              <PropertyRef Name="BrojPasosa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AvioKompanijaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CheckIns" EntityType="Self.CheckIn" />
+          <EntitySet Name="Kartas" EntityType="Self.Karta" />
+          <EntitySet Name="Lets" EntityType="Self.Let" />
+          <EntitySet Name="Letis" EntityType="Self.Leti" />
+          <EntitySet Name="Ljubimacs" EntityType="Self.Ljubimac" />
+          <EntitySet Name="Putniks" EntityType="Self.Putnik" />
+          <EntitySet Name="Radniks" EntityType="Self.Radnik" />
+          <EntitySet Name="Rezervacijas" EntityType="Self.Rezervacija" />
+          <EntitySet Name="Vlasniks" EntityType="Self.Vlasnik" />
+          <EntitySet Name="Zalbas" EntityType="Self.Zalba" />
+          <AssociationSet Name="FK_CheckIn_Karta" Association="Self.FK_CheckIn_Karta">
+            <End Role="Karta" EntitySet="Kartas" />
+            <End Role="CheckIn" EntitySet="CheckIns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CheckIn_Putnik" Association="Self.FK_CheckIn_Putnik">
+            <End Role="Putnik" EntitySet="Putniks" />
+            <End Role="CheckIn" EntitySet="CheckIns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ljubimac_Karta" Association="Self.FK_Ljubimac_Karta">
+            <End Role="Karta" EntitySet="Kartas" />
+            <End Role="Ljubimac" EntitySet="Ljubimacs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rezervacija_Karta" Association="Self.FK_Rezervacija_Karta">
+            <End Role="Karta" EntitySet="Kartas" />
+            <End Role="Rezervacija" EntitySet="Rezervacijas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Leti_Let" Association="Self.FK_Leti_Let">
+            <End Role="Let" EntitySet="Lets" />
+            <End Role="Leti" EntitySet="Letis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Leti_Putnik" Association="Self.FK_Leti_Putnik">
+            <End Role="Putnik" EntitySet="Putniks" />
+            <End Role="Leti" EntitySet="Letis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ljubimac_Vlasnik" Association="Self.FK_Ljubimac_Vlasnik">
+            <End Role="Vlasnik" EntitySet="Vlasniks" />
+            <End Role="Ljubimac" EntitySet="Ljubimacs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zalba_Putnik" Association="Self.FK_Zalba_Putnik">
+            <End Role="Putnik" EntitySet="Putniks" />
+            <End Role="Zalba" EntitySet="Zalbas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AvioKompanijaModelStoreContainer" CdmEntityContainer="AvioKompanijaEntities">
+          <EntitySetMapping Name="CheckIns">
+            <EntityTypeMapping TypeName="AvioKompanijaModel.CheckIn">
+              <MappingFragment StoreEntitySet="CheckIn">
+                <ScalarProperty Name="BrojCheckIn" ColumnName="BrojCheckIn" />
+                <ScalarProperty Name="SifraKarte" ColumnName="SifraKarte" />
+                <ScalarProperty Name="BrojPasosa" ColumnName="BrojPasosa" />
+                <ScalarProperty Name="Vreme" ColumnName="Vreme" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kartas">
+            <EntityTypeMapping TypeName="AvioKompanijaModel.Karta">
+              <MappingFragment StoreEntitySet="Karta">
+                <ScalarProperty Name="SifraKarte" ColumnName="SifraKarte" />
+                <ScalarProperty Name="BrojKarte" ColumnName="BrojKarte" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lets">
+            <EntityTypeMapping TypeName="AvioKompanijaModel.Let">
+              <MappingFragment StoreEntitySet="Let">
+                <ScalarProperty Name="SifraLeta" ColumnName="SifraLeta" />
+                <ScalarProperty Name="DestinacijaOd" ColumnName="DestinacijaOd" />
+                <ScalarProperty Name="DestinacijaDo" ColumnName="DestinacijaDo" />
+                <ScalarProperty Name="DatumPolaska" ColumnName="DatumPolaska" />
+                <ScalarProperty Name="DatumPovratka" ColumnName="DatumPovratka" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Letis">
+            <EntityTypeMapping TypeName="AvioKompanijaModel.Leti">
+              <MappingFragment StoreEntitySet="Leti">
+                <ScalarProperty Name="SifraLeta" ColumnName="SifraLeta" />
+                <ScalarProperty Name="BrojPasosa" ColumnName="BrojPasosa" />
+                <ScalarProperty Name="Vreme" ColumnName="Vreme" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ljubimacs">
+            <EntityTypeMapping TypeName="AvioKompanijaModel.Ljubimac">
+              <MappingFragment StoreEntitySet="Ljubimac">
+                <ScalarProperty Name="BrojCipa" ColumnName="BrojCipa" />
+                <ScalarProperty Name="BrojPasosa" ColumnName="BrojPasosa" />
+                <ScalarProperty Name="SifraKarte" ColumnName="SifraKarte" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Rasa" ColumnName="Rasa" />
+                <ScalarProperty Name="Tezina" ColumnName="Tezina" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Putniks">
+            <EntityTypeMapping TypeName="AvioKompanijaModel.Putnik">
+              <MappingFragment StoreEntitySet="Putnik">
+                <ScalarProperty Name="BrojPasosa" ColumnName="BrojPasosa" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="BrojTelefona" ColumnName="BrojTelefona" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Radniks">
+            <EntityTypeMapping TypeName="AvioKompanijaModel.Radnik">
+              <MappingFragment StoreEntitySet="Radnik">
+                <ScalarProperty Name="RadnikID" ColumnName="RadnikID" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rezervacijas">
+            <EntityTypeMapping TypeName="AvioKompanijaModel.Rezervacija">
+              <MappingFragment StoreEntitySet="Rezervacija">
+                <ScalarProperty Name="SifraRezervacije" ColumnName="SifraRezervacije" />
+                <ScalarProperty Name="SifraKarte" ColumnName="SifraKarte" />
+                <ScalarProperty Name="Vreme" ColumnName="Vreme" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vlasniks">
+            <EntityTypeMapping TypeName="AvioKompanijaModel.Vlasnik">
+              <MappingFragment StoreEntitySet="Vlasnik">
+                <ScalarProperty Name="BrojPasosa" ColumnName="BrojPasosa" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="BrojTelefona" ColumnName="BrojTelefona" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zalbas">
+            <EntityTypeMapping TypeName="AvioKompanijaModel.Zalba">
+              <MappingFragment StoreEntitySet="Zalba">
+                <ScalarProperty Name="SifraZalbe" ColumnName="SifraZalbe" />
+                <ScalarProperty Name="BrojPasosa" ColumnName="BrojPasosa" />
+                <ScalarProperty Name="Komentar" ColumnName="Komentar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
