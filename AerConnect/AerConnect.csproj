@@ -170,6 +170,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\CustomPasswordHasher.cs" />
+    <Compile Include="Helper\Encrypte.cs" />
     <Compile Include="Models\AirConnectDatabase.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
