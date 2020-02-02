@@ -7,17 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AerConnect
+namespace AerConnect.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Rezervacija
+    public partial class Leti
     {
-        public int SifraRezervacije { get; set; }
-        public int SifraKarte { get; set; }
+        public int SifraLeta { get; set; }
+        public int BrojPasosa { get; set; }
         public string Vreme { get; set; }
+        public string Datum { get; set; }
     
-        public virtual Karta Karta { get; set; }
+        public virtual Let Let { get; set; }
+        public virtual Putnik Putnik { get; set; }
     }
 }

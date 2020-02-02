@@ -30,6 +30,30 @@
         </div>
     </div>
     <div class="form-group">
+        @Html.LabelFor(m => m.Ime, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBox("Ime", null, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Prezime, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBox("Prezime", null, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.BrojPasosa, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBox("BrojPasosa", null, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.BrojTelefona, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBox("BrojTelefona", null, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" class="btn btn-default" value="Register" />
         </div>

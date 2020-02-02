@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using AerConnect.Models;
+using System.Security.Cryptography;
+using System.IO;
 
 namespace AerConnect.Controllers
 {
@@ -17,9 +19,11 @@ namespace AerConnect.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        public AvioKompanijaEntities entities;
 
         public AccountController()
         {
+            entities = new AvioKompanijaEntities();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -72,6 +76,8 @@ namespace AerConnect.Controllers
             {
                 return View(model);
             }
+
+
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
@@ -149,8 +155,28 @@ namespace AerConnect.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+
+            
+
+
             if (ModelState.IsValid)
             {
+                Putnik putnik = new Putnik {
+                    Email = model.Email,
+                    Password = model.Password,
+                    Ime = model.Ime,
+                    Prezime = model.Prezime,
+                    BrojPasosa=model.BrojPasosa,
+                    BrojTelefona=model.BrojTelefona
+
+
+                };
+                entities.Putniks.Add(putnik);
+                entities.SaveChanges();
+
+
+                 
+                 
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

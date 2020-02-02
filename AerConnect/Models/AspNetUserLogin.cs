@@ -7,17 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AerConnect
+namespace AerConnect.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Radnik
+    public partial class AspNetUserLogin
     {
-        public string RadnikID { get; set; }
-        public string Ime { get; set; }
-        public string Prezime { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
+        public string LoginProvider { get; set; }
+        public string ProviderKey { get; set; }
+        public string UserId { get; set; }
+    
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

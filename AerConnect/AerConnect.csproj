@@ -170,17 +170,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AirConnectDatabase.Context.cs">
+    <Compile Include="Models\AirConnectDatabase.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AirConnectDatabase.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="AirConnectDatabase.cs">
+    <Compile Include="Models\AirConnectDatabase.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AirConnectDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="AirConnectDatabase.Designer.cs">
+    <Compile Include="Models\AirConnectDatabase.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AirConnectDatabase.edmx</DependentUpon>
@@ -190,7 +190,19 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="CheckIn.cs">
+    <Compile Include="Models\AspNetRole.cs">
+      <DependentUpon>AirConnectDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>AirConnectDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaim.cs">
+      <DependentUpon>AirConnectDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogin.cs">
+      <DependentUpon>AirConnectDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CheckIn.cs">
       <DependentUpon>AirConnectDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
@@ -202,46 +214,43 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Karta.cs">
+    <Compile Include="Models\Karta.cs">
       <DependentUpon>AirConnectDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Let.cs">
+    <Compile Include="Models\Let.cs">
       <DependentUpon>AirConnectDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Leti.cs">
+    <Compile Include="Models\Leti.cs">
       <DependentUpon>AirConnectDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Ljubimac.cs">
+    <Compile Include="Models\Ljubimac.cs">
       <DependentUpon>AirConnectDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Putnik.cs">
+    <Compile Include="Models\Putnik.cs">
       <DependentUpon>AirConnectDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Radnik.cs">
-      <DependentUpon>AirConnectDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Rezervacija.cs">
+    <Compile Include="Models\Rezervacija.cs">
       <DependentUpon>AirConnectDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
-    <Compile Include="Vlasnik.cs">
+    <Compile Include="Models\Vlasnik.cs">
       <DependentUpon>AirConnectDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Zalba.cs">
+    <Compile Include="Models\Zalba.cs">
       <DependentUpon>AirConnectDatabase.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AirConnectDatabase.Context.tt">
+    <Content Include="Models\AirConnectDatabase.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>AirConnectDatabase.edmx</DependentUpon>
       <LastGenOutput>AirConnectDatabase.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="AirConnectDatabase.tt">
+    <Content Include="Models\AirConnectDatabase.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>AirConnectDatabase.edmx</DependentUpon>
       <LastGenOutput>AirConnectDatabase.cs</LastGenOutput>
@@ -256,11 +265,11 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="AirConnectDatabase.edmx">
+    <EntityDeploy Include="Models\AirConnectDatabase.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>AirConnectDatabase.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="AirConnectDatabase.edmx.diagram">
+    <Content Include="Models\AirConnectDatabase.edmx.diagram">
       <DependentUpon>AirConnectDatabase.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
