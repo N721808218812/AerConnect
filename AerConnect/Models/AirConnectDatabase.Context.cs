@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AerConnect
+namespace AerConnect.Models
 {
     using System;
     using System.Data.Entity;
@@ -31,9 +31,12 @@ namespace AerConnect
         public virtual DbSet<Leti> Letis { get; set; }
         public virtual DbSet<Ljubimac> Ljubimacs { get; set; }
         public virtual DbSet<Putnik> Putniks { get; set; }
-        public virtual DbSet<Radnik> Radniks { get; set; }
         public virtual DbSet<Rezervacija> Rezervacijas { get; set; }
         public virtual DbSet<Vlasnik> Vlasniks { get; set; }
         public virtual DbSet<Zalba> Zalbas { get; set; }
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
     }
 }

@@ -8,6 +8,8 @@ namespace AerConnect.Controllers
 {
     public class HomeController : Controller
     {
+        [Authorize(Roles ="Radnik")]
+        
         public ActionResult Index()
         {
             return View();

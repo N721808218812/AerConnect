@@ -29,11 +29,11 @@ namespace AerConnect.Models
         public string Provider { get; set; }
 
         [Required]
-        [Display(Name = "Code")]
+        [Display(Name = "Kod")]
         public string Code { get; set; }
         public string ReturnUrl { get; set; }
 
-        [Display(Name = "Remember this browser?")]
+        [Display(Name = "Zapamti ovaj pregledac?")]
         public bool RememberBrowser { get; set; }
 
         public bool RememberMe { get; set; }
@@ -55,10 +55,10 @@ namespace AerConnect.Models
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Sifra")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Zapamti me?")]
         public bool RememberMe { get; set; }
     }
 
@@ -70,15 +70,38 @@ namespace AerConnect.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "Minimalna duzina mora da bude najmanje {2} karaktera dugacka ", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Sifra")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Potvrdite sifru")]
+        [Compare("Password", ErrorMessage = "Sifra i potvrdjena sifra se ne poklapaju")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name ="Broj Pasosa")]
+        [RegularExpression("([0-9]{6})",ErrorMessage ="Maksimalna duzina pasosa je 6 karaktera")]
+        public int BrojPasosa { get; set; }
+
+        [Required]
+        [Display(Name = "Broj Telefona")]
+        [RegularExpression("([06][0-9]{7,8})", ErrorMessage = "Morate uneti format 06*******(*)")]
+        public int BrojTelefona { get; set; }
+
+        [Required]
+        [Display(Name = "Ime")]
+        [StringLength(30, ErrorMessage = "Minimalna duzina mora da bude najmanje {2} karaktera dugacka ", MinimumLength = 2)]
+        public string Ime { get; set; }
+
+        [Required]
+        [Display(Name = "Prezime")]
+        [StringLength(30, ErrorMessage = "Minimalna duzina mora da bude najmanje {2} karaktera dugacka ", MinimumLength = 2)]
+        public string Prezime { get; set; }
+
+
+
     }
 
     public class ResetPasswordViewModel
@@ -89,14 +112,14 @@ namespace AerConnect.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "Minimalna duzina mora da bude najmanje {2} karaktera dugacka", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Sifra")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Potvrda sifre")]
+        [Compare("Password", ErrorMessage = "Sifra i potvrdjena sifra se ne poklapaju")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }

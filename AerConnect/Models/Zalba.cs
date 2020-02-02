@@ -7,19 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AerConnect
+namespace AerConnect.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class CheckIn
+    public partial class Zalba
     {
-        public int BrojCheckIn { get; set; }
-        public int SifraKarte { get; set; }
+        public int SifraZalbe { get; set; }
         public int BrojPasosa { get; set; }
-        public string Vreme { get; set; }
+        public string Komentar { get; set; }
     
-        public virtual Karta Karta { get; set; }
         public virtual Putnik Putnik { get; set; }
     }
 }
