@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using AerConnect.Models;
 using System.Security.Cryptography;
 using System.IO;
+using AerConnect.Helper;
 
 namespace AerConnect.Controllers
 {
@@ -24,6 +25,7 @@ namespace AerConnect.Controllers
         public AccountController()
         {
             entities = new AvioKompanijaEntities();
+           
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -155,7 +157,8 @@ namespace AerConnect.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-
+            CustomPasswordHasher m = new CustomPasswordHasher();
+            
             
 
 
@@ -163,7 +166,7 @@ namespace AerConnect.Controllers
             {
                 Putnik putnik = new Putnik {
                     Email = model.Email,
-                    Password = model.Password,
+                    Password = m.HashPassword(model.Password),
                     Ime = model.Ime,
                     Prezime = model.Prezime,
                     BrojPasosa=model.BrojPasosa,
