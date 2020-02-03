@@ -24,16 +24,13 @@ namespace AerConnect.Models
 
 
         [Required]
-        [MaxLength(6)]
+        
         [Display(Name = "Šifra rezervacije")]
-        [MinLength(1)]
+      
         public int SifraRezervacije { get; set; }
 
         [Required]
-        [MaxLength(6)]
-        [Display(Name = "Broj pasoša")]
-        [MinLength(6)]
-        public int SifraRezervacije { get; set; }
+        [Display(Name = "Broj pasoša")]  
         public int BrojPasosa { get; set; }
 
         
