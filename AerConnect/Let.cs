@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AerConnect.Models
+namespace AerConnect
 {
     using System;
     using System.Collections.Generic;
@@ -17,7 +17,7 @@ namespace AerConnect.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Let()
         {
-            this.Letis = new HashSet<Leti>();
+            this.Rezervacijas = new HashSet<Rezervacija>();
         }
     
         public int SifraLeta { get; set; }
@@ -27,6 +27,6 @@ namespace AerConnect.Models
         public string DatumPovratka { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Leti> Letis { get; set; }
+        public virtual ICollection<Rezervacija> Rezervacijas { get; set; }
     }
 }

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AerConnect.Models
+namespace AerConnect
 {
     using System;
     using System.Collections.Generic;
@@ -15,9 +15,12 @@ namespace AerConnect.Models
     public partial class Rezervacija
     {
         public int SifraRezervacije { get; set; }
-        public int SifraKarte { get; set; }
         public string Vreme { get; set; }
+        public int BrojPasosa { get; set; }
+        public int SifraLeta { get; set; }
+        public Nullable<int> BrojCipa { get; set; }
     
-        public virtual Karta Karta { get; set; }
+        public virtual Let Let { get; set; }
+        public virtual Putnik Putnik { get; set; }
     }
 }

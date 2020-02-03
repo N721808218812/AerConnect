@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AerConnect.Models
+namespace AerConnect
 {
     using System;
     using System.Collections.Generic;
@@ -16,12 +16,10 @@ namespace AerConnect.Models
     {
         public int BrojCipa { get; set; }
         public int BrojPasosa { get; set; }
-        public int SifraKarte { get; set; }
         public string Ime { get; set; }
         public string Rasa { get; set; }
         public int Tezina { get; set; }
     
-        public virtual Karta Karta { get; set; }
-        public virtual Vlasnik Vlasnik { get; set; }
+        public virtual Putnik Putnik { get; set; }
     }
 }

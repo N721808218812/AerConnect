@@ -7,27 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AerConnect.Models
+namespace AerConnect
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
     
-    public partial class Karta
+    public partial class Putnik
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Karta()
+        public Putnik()
         {
             this.CheckIns = new HashSet<CheckIn>();
             this.Ljubimacs = new HashSet<Ljubimac>();
             this.Rezervacijas = new HashSet<Rezervacija>();
+            this.Zalbas = new HashSet<Zalba>();
         }
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int SifraKarte { get; set; }
-
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int BrojKarte { get; set; }
+    
+        public int BrojPasosa { get; set; }
+        public string Ime { get; set; }
+        public string Prezime { get; set; }
+        public int BrojTelefona { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CheckIn> CheckIns { get; set; }
@@ -35,5 +36,7 @@ namespace AerConnect.Models
         public virtual ICollection<Ljubimac> Ljubimacs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Rezervacija> Rezervacijas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Zalba> Zalbas { get; set; }
     }
 }

@@ -54,7 +54,9 @@
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.ComponentModel.DataAnnotations.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Xml.Linq" />
@@ -170,43 +172,43 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AspNetRole.cs">
+      <DependentUpon>AvioKompanija.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUser.cs">
+      <DependentUpon>AvioKompanija.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserClaim.cs">
+      <DependentUpon>AvioKompanija.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserLogin.cs">
+      <DependentUpon>AvioKompanija.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AvioKompanija.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AvioKompanija.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AvioKompanija.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AvioKompanija.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AvioKompanija.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AvioKompanija.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="CheckIn.cs">
+      <DependentUpon>AvioKompanija.tt</DependentUpon>
+    </Compile>
     <Compile Include="Helper\CustomPasswordHasher.cs" />
     <Compile Include="Helper\Encrypte.cs" />
-    <Compile Include="Models\AirConnectDatabase.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AirConnectDatabase.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AirConnectDatabase.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AirConnectDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AirConnectDatabase.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AirConnectDatabase.edmx</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Models\AspNetRole.cs">
-      <DependentUpon>AirConnectDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AspNetUser.cs">
-      <DependentUpon>AirConnectDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AspNetUserClaim.cs">
-      <DependentUpon>AirConnectDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AspNetUserLogin.cs">
-      <DependentUpon>AirConnectDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CheckIn.cs">
-      <DependentUpon>AirConnectDatabase.tt</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CheckInController.cs" />
     <Compile Include="Controllers\FlightController.cs" />
@@ -216,46 +218,37 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Karta.cs">
-      <DependentUpon>AirConnectDatabase.tt</DependentUpon>
+    <Compile Include="Let.cs">
+      <DependentUpon>AvioKompanija.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Let.cs">
-      <DependentUpon>AirConnectDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Leti.cs">
-      <DependentUpon>AirConnectDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Ljubimac.cs">
-      <DependentUpon>AirConnectDatabase.tt</DependentUpon>
+    <Compile Include="Ljubimac.cs">
+      <DependentUpon>AvioKompanija.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\Putnik.cs">
-      <DependentUpon>AirConnectDatabase.tt</DependentUpon>
+    <Compile Include="Putnik.cs">
+      <DependentUpon>AvioKompanija.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Rezervacija.cs">
-      <DependentUpon>AirConnectDatabase.tt</DependentUpon>
+    <Compile Include="Rezervacija.cs">
+      <DependentUpon>AvioKompanija.tt</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
-    <Compile Include="Models\Vlasnik.cs">
-      <DependentUpon>AirConnectDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Zalba.cs">
-      <DependentUpon>AirConnectDatabase.tt</DependentUpon>
+    <Compile Include="Zalba.cs">
+      <DependentUpon>AvioKompanija.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\AirConnectDatabase.Context.tt">
+    <Content Include="AvioKompanija.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AirConnectDatabase.edmx</DependentUpon>
-      <LastGenOutput>AirConnectDatabase.Context.cs</LastGenOutput>
+      <DependentUpon>AvioKompanija.edmx</DependentUpon>
+      <LastGenOutput>AvioKompanija.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\AirConnectDatabase.tt">
+    <Content Include="AvioKompanija.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AirConnectDatabase.edmx</DependentUpon>
-      <LastGenOutput>AirConnectDatabase.cs</LastGenOutput>
+      <DependentUpon>AvioKompanija.edmx</DependentUpon>
+      <LastGenOutput>AvioKompanija.cs</LastGenOutput>
     </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -267,12 +260,12 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\AirConnectDatabase.edmx">
+    <EntityDeploy Include="AvioKompanija.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>AirConnectDatabase.Designer.cs</LastGenOutput>
+      <LastGenOutput>AvioKompanija.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\AirConnectDatabase.edmx.diagram">
-      <DependentUpon>AirConnectDatabase.edmx</DependentUpon>
+    <Content Include="AvioKompanija.edmx.diagram">
+      <DependentUpon>AvioKompanija.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -323,7 +316,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\images\" />
-    <Folder Include="Helper\" />
     <Folder Include="Views\CheckIn\" />
     <Folder Include="Views\Flight\" />
     <Folder Include="Views\Ticket\" />

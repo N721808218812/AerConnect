@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AerConnect.Models
+namespace AerConnect
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class AvioKompanijaEntities : DbContext
+    public partial class AvioKompanijaEntities1 : DbContext
     {
-        public AvioKompanijaEntities()
-            : base("name=AvioKompanijaEntities")
+        public AvioKompanijaEntities1()
+            : base("name=AvioKompanijaEntities1")
         {
         }
     
@@ -25,18 +25,15 @@ namespace AerConnect.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<CheckIn> CheckIns { get; set; }
-        public virtual DbSet<Karta> Kartas { get; set; }
-        public virtual DbSet<Let> Lets { get; set; }
-        public virtual DbSet<Leti> Letis { get; set; }
-        public virtual DbSet<Ljubimac> Ljubimacs { get; set; }
-        public virtual DbSet<Putnik> Putniks { get; set; }
-        public virtual DbSet<Rezervacija> Rezervacijas { get; set; }
-        public virtual DbSet<Vlasnik> Vlasniks { get; set; }
-        public virtual DbSet<Zalba> Zalbas { get; set; }
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<CheckIn> CheckIns { get; set; }
+        public virtual DbSet<Let> Lets { get; set; }
+        public virtual DbSet<Ljubimac> Ljubimacs { get; set; }
+        public virtual DbSet<Putnik> Putniks { get; set; }
+        public virtual DbSet<Rezervacija> Rezervacijas { get; set; }
+        public virtual DbSet<Zalba> Zalbas { get; set; }
     }
 }

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AerConnect.Models
+namespace AerConnect
 {
     using System;
     using System.Collections.Generic;
@@ -30,12 +30,12 @@ namespace AerConnect.Models
         [MaxLength(6)]
         [Display(Name = "Broj pasoša")]
         [MinLength(6)]
+        public int SifraRezervacije { get; set; }
         public int BrojPasosa { get; set; }
 
         [RegularExpression("[0-9]{2}[:][0-9]{2}",ErrorMessage ="Morate uneti vreme u formatu HH:MM (**:**)")]
         public string Vreme { get; set; }
     
-        public virtual Karta Karta { get; set; }
         public virtual Putnik Putnik { get; set; }
     }
 }
