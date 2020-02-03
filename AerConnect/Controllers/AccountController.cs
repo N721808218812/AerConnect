@@ -20,11 +20,11 @@ namespace AerConnect.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        public AvioKompanijaEntities entities;
+        public AvioKompanijaEntities1 entities;
 
         public AccountController()
         {
-            entities = new AvioKompanijaEntities();
+            entities = new AvioKompanijaEntities1();
            
         }
 

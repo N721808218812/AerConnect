@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AerConnect.Models
+namespace AerConnect
 {
     using System;
     using System.Collections.Generic;
@@ -18,7 +18,8 @@ namespace AerConnect.Models
         public Putnik()
         {
             this.CheckIns = new HashSet<CheckIn>();
-            this.Letis = new HashSet<Leti>();
+            this.Ljubimacs = new HashSet<Ljubimac>();
+            this.Rezervacijas = new HashSet<Rezervacija>();
             this.Zalbas = new HashSet<Zalba>();
         }
     
@@ -32,7 +33,9 @@ namespace AerConnect.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CheckIn> CheckIns { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Leti> Letis { get; set; }
+        public virtual ICollection<Ljubimac> Ljubimacs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Rezervacija> Rezervacijas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Zalba> Zalbas { get; set; }
     }

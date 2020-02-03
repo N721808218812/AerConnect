@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="AvioKompanijaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="AvioKompanijaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AspNetRoles">
           <Key>
             <PropertyRef Name="Id" />
@@ -59,20 +59,13 @@
         <EntityType Name="CheckIn">
           <Key>
             <PropertyRef Name="BrojCheckIn" />
-            <PropertyRef Name="SifraKarte" />
+            <PropertyRef Name="SifraRezervacije" />
             <PropertyRef Name="BrojPasosa" />
           </Key>
-          <Property Name="BrojCheckIn" Type="int" Nullable="false" />
-          <Property Name="SifraKarte" Type="int" Nullable="false" />
+          <Property Name="BrojCheckIn" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SifraRezervacije" Type="int" Nullable="false" />
           <Property Name="BrojPasosa" Type="int" Nullable="false" />
           <Property Name="Vreme" Type="nvarchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Karta">
-          <Key>
-            <PropertyRef Name="SifraKarte" />
-          </Key>
-          <Property Name="SifraKarte" Type="int" Nullable="false" />
-          <Property Name="BrojKarte" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Let">
           <Key>
@@ -84,25 +77,12 @@
           <Property Name="DatumPolaska" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="DatumPovratka" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="Leti">
-          <Key>
-            <PropertyRef Name="SifraLeta" />
-            <PropertyRef Name="BrojPasosa" />
-          </Key>
-          <Property Name="SifraLeta" Type="int" Nullable="false" />
-          <Property Name="BrojPasosa" Type="int" Nullable="false" />
-          <Property Name="Vreme" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Datum" Type="nvarchar" MaxLength="50" Nullable="false" />
-        </EntityType>
         <EntityType Name="Ljubimac">
           <Key>
             <PropertyRef Name="BrojCipa" />
-            <PropertyRef Name="BrojPasosa" />
-            <PropertyRef Name="SifraKarte" />
           </Key>
           <Property Name="BrojCipa" Type="int" Nullable="false" />
           <Property Name="BrojPasosa" Type="int" Nullable="false" />
-          <Property Name="SifraKarte" Type="int" Nullable="false" />
           <Property Name="Ime" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Rasa" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Tezina" Type="int" Nullable="false" />
@@ -121,43 +101,23 @@
         <EntityType Name="Rezervacija">
           <Key>
             <PropertyRef Name="SifraRezervacije" />
-            <PropertyRef Name="SifraKarte" />
-          </Key>
-          <Property Name="SifraRezervacije" Type="int" Nullable="false" />
-          <Property Name="SifraKarte" Type="int" Nullable="false" />
-          <Property Name="Vreme" Type="nvarchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Vlasnik">
-          <Key>
             <PropertyRef Name="BrojPasosa" />
           </Key>
+          <Property Name="SifraRezervacije" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Vreme" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="BrojPasosa" Type="int" Nullable="false" />
-          <Property Name="Ime" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Prezime" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="BrojTelefona" Type="int" Nullable="false" />
-          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SifraLeta" Type="int" Nullable="false" />
+          <Property Name="BrojCipa" Type="int" />
         </EntityType>
         <EntityType Name="Zalba">
           <Key>
             <PropertyRef Name="SifraZalbe" />
             <PropertyRef Name="BrojPasosa" />
           </Key>
-          <Property Name="SifraZalbe" Type="int" Nullable="false" />
+          <Property Name="SifraZalbe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BrojPasosa" Type="int" Nullable="false" />
           <Property Name="Komentar" Type="nvarchar" MaxLength="300" Nullable="false" />
         </EntityType>
-        <Association Name="FK_CheckIn_Karta">
-          <End Role="Karta" Type="Self.Karta" Multiplicity="1" />
-          <End Role="CheckIn" Type="Self.CheckIn" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Karta">
-              <PropertyRef Name="SifraKarte" />
-            </Principal>
-            <Dependent Role="CheckIn">
-              <PropertyRef Name="SifraKarte" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_CheckIn_Putnik">
           <End Role="Putnik" Type="Self.Putnik" Multiplicity="1" />
           <End Role="CheckIn" Type="Self.CheckIn" Multiplicity="*" />
@@ -226,63 +186,39 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Leti_Let">
-          <End Role="Let" Type="Self.Let" Multiplicity="1" />
-          <End Role="Leti" Type="Self.Leti" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Let">
-              <PropertyRef Name="SifraLeta" />
-            </Principal>
-            <Dependent Role="Leti">
-              <PropertyRef Name="SifraLeta" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Leti_Putnik">
+        <Association Name="FK_Ljubimac_Putnik">
           <End Role="Putnik" Type="Self.Putnik" Multiplicity="1" />
-          <End Role="Leti" Type="Self.Leti" Multiplicity="*" />
+          <End Role="Ljubimac" Type="Self.Ljubimac" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Putnik">
               <PropertyRef Name="BrojPasosa" />
             </Principal>
-            <Dependent Role="Leti">
-              <PropertyRef Name="BrojPasosa" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ljubimac_Karta">
-          <End Role="Karta" Type="Self.Karta" Multiplicity="1" />
-          <End Role="Ljubimac" Type="Self.Ljubimac" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Karta">
-              <PropertyRef Name="SifraKarte" />
-            </Principal>
-            <Dependent Role="Ljubimac">
-              <PropertyRef Name="SifraKarte" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ljubimac_Vlasnik">
-          <End Role="Vlasnik" Type="Self.Vlasnik" Multiplicity="1" />
-          <End Role="Ljubimac" Type="Self.Ljubimac" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Vlasnik">
-              <PropertyRef Name="BrojPasosa" />
-            </Principal>
             <Dependent Role="Ljubimac">
               <PropertyRef Name="BrojPasosa" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Rezervacija_Karta">
-          <End Role="Karta" Type="Self.Karta" Multiplicity="1" />
+        <Association Name="FK_Rezervacija_Let">
+          <End Role="Let" Type="Self.Let" Multiplicity="1" />
           <End Role="Rezervacija" Type="Self.Rezervacija" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Karta">
-              <PropertyRef Name="SifraKarte" />
+            <Principal Role="Let">
+              <PropertyRef Name="SifraLeta" />
             </Principal>
             <Dependent Role="Rezervacija">
-              <PropertyRef Name="SifraKarte" />
+              <PropertyRef Name="SifraLeta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rezervacija_Putnik">
+          <End Role="Putnik" Type="Self.Putnik" Multiplicity="1" />
+          <End Role="Rezervacija" Type="Self.Rezervacija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Putnik">
+              <PropertyRef Name="BrojPasosa" />
+            </Principal>
+            <Dependent Role="Rezervacija">
+              <PropertyRef Name="BrojPasosa" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -305,18 +241,11 @@
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CheckIn" EntityType="Self.CheckIn" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Karta" EntityType="Self.Karta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Let" EntityType="Self.Let" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Leti" EntityType="Self.Leti" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ljubimac" EntityType="Self.Ljubimac" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Putnik" EntityType="Self.Putnik" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rezervacija" EntityType="Self.Rezervacija" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Vlasnik" EntityType="Self.Vlasnik" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Zalba" EntityType="Self.Zalba" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_CheckIn_Karta" Association="Self.FK_CheckIn_Karta">
-            <End Role="Karta" EntitySet="Karta" />
-            <End Role="CheckIn" EntitySet="CheckIn" />
-          </AssociationSet>
           <AssociationSet Name="FK_CheckIn_Putnik" Association="Self.FK_CheckIn_Putnik">
             <End Role="Putnik" EntitySet="Putnik" />
             <End Role="CheckIn" EntitySet="CheckIn" />
@@ -337,24 +266,16 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
-          <AssociationSet Name="FK_Leti_Let" Association="Self.FK_Leti_Let">
-            <End Role="Let" EntitySet="Let" />
-            <End Role="Leti" EntitySet="Leti" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Leti_Putnik" Association="Self.FK_Leti_Putnik">
+          <AssociationSet Name="FK_Ljubimac_Putnik" Association="Self.FK_Ljubimac_Putnik">
             <End Role="Putnik" EntitySet="Putnik" />
-            <End Role="Leti" EntitySet="Leti" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ljubimac_Karta" Association="Self.FK_Ljubimac_Karta">
-            <End Role="Karta" EntitySet="Karta" />
             <End Role="Ljubimac" EntitySet="Ljubimac" />
           </AssociationSet>
-          <AssociationSet Name="FK_Ljubimac_Vlasnik" Association="Self.FK_Ljubimac_Vlasnik">
-            <End Role="Vlasnik" EntitySet="Vlasnik" />
-            <End Role="Ljubimac" EntitySet="Ljubimac" />
+          <AssociationSet Name="FK_Rezervacija_Let" Association="Self.FK_Rezervacija_Let">
+            <End Role="Let" EntitySet="Let" />
+            <End Role="Rezervacija" EntitySet="Rezervacija" />
           </AssociationSet>
-          <AssociationSet Name="FK_Rezervacija_Karta" Association="Self.FK_Rezervacija_Karta">
-            <End Role="Karta" EntitySet="Karta" />
+          <AssociationSet Name="FK_Rezervacija_Putnik" Association="Self.FK_Rezervacija_Putnik">
+            <End Role="Putnik" EntitySet="Putnik" />
             <End Role="Rezervacija" EntitySet="Rezervacija" />
           </AssociationSet>
           <AssociationSet Name="FK_Zalba_Putnik" Association="Self.FK_Zalba_Putnik">
@@ -362,32 +283,71 @@
             <End Role="Zalba" EntitySet="Zalba" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AvioKompanijaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
         <EntityType Name="CheckIn">
           <Key>
             <PropertyRef Name="BrojCheckIn" />
-            <PropertyRef Name="SifraKarte" />
+            <PropertyRef Name="SifraRezervacije" />
             <PropertyRef Name="BrojPasosa" />
           </Key>
-          <Property Name="BrojCheckIn" Type="Int32" Nullable="false" />
-          <Property Name="SifraKarte" Type="Int32" Nullable="false" />
+          <Property Name="BrojCheckIn" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SifraRezervacije" Type="Int32" Nullable="false" />
           <Property Name="BrojPasosa" Type="Int32" Nullable="false" />
           <Property Name="Vreme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Karta" Relationship="Self.FK_CheckIn_Karta" FromRole="CheckIn" ToRole="Karta" />
           <NavigationProperty Name="Putnik" Relationship="Self.FK_CheckIn_Putnik" FromRole="CheckIn" ToRole="Putnik" />
-        </EntityType>
-        <EntityType Name="Karta">
-          <Key>
-            <PropertyRef Name="SifraKarte" />
-          </Key>
-          <Property Name="SifraKarte" Type="Int32" Nullable="false" />
-          <Property Name="BrojKarte" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="CheckIns" Relationship="Self.FK_CheckIn_Karta" FromRole="Karta" ToRole="CheckIn" />
-          <NavigationProperty Name="Ljubimacs" Relationship="Self.FK_Ljubimac_Karta" FromRole="Karta" ToRole="Ljubimac" />
-          <NavigationProperty Name="Rezervacijas" Relationship="Self.FK_Rezervacija_Karta" FromRole="Karta" ToRole="Rezervacija" />
         </EntityType>
         <EntityType Name="Let">
           <Key>
@@ -398,34 +358,18 @@
           <Property Name="DestinacijaDo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DatumPolaska" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DatumPovratka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Letis" Relationship="Self.FK_Leti_Let" FromRole="Let" ToRole="Leti" />
-        </EntityType>
-        <EntityType Name="Leti">
-          <Key>
-            <PropertyRef Name="SifraLeta" />
-            <PropertyRef Name="BrojPasosa" />
-          </Key>
-          <Property Name="SifraLeta" Type="Int32" Nullable="false" />
-          <Property Name="BrojPasosa" Type="Int32" Nullable="false" />
-          <Property Name="Vreme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Datum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Let" Relationship="Self.FK_Leti_Let" FromRole="Leti" ToRole="Let" />
-          <NavigationProperty Name="Putnik" Relationship="Self.FK_Leti_Putnik" FromRole="Leti" ToRole="Putnik" />
+          <NavigationProperty Name="Rezervacijas" Relationship="Self.FK_Rezervacija_Let" FromRole="Let" ToRole="Rezervacija" />
         </EntityType>
         <EntityType Name="Ljubimac">
           <Key>
             <PropertyRef Name="BrojCipa" />
-            <PropertyRef Name="BrojPasosa" />
-            <PropertyRef Name="SifraKarte" />
           </Key>
           <Property Name="BrojCipa" Type="Int32" Nullable="false" />
           <Property Name="BrojPasosa" Type="Int32" Nullable="false" />
-          <Property Name="SifraKarte" Type="Int32" Nullable="false" />
           <Property Name="Ime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Rasa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Tezina" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Karta" Relationship="Self.FK_Ljubimac_Karta" FromRole="Ljubimac" ToRole="Karta" />
-          <NavigationProperty Name="Vlasnik" Relationship="Self.FK_Ljubimac_Vlasnik" FromRole="Ljubimac" ToRole="Vlasnik" />
+          <NavigationProperty Name="Putnik" Relationship="Self.FK_Ljubimac_Putnik" FromRole="Ljubimac" ToRole="Putnik" />
         </EntityType>
         <EntityType Name="Putnik">
           <Key>
@@ -438,49 +382,58 @@
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="CheckIns" Relationship="Self.FK_CheckIn_Putnik" FromRole="Putnik" ToRole="CheckIn" />
-          <NavigationProperty Name="Letis" Relationship="Self.FK_Leti_Putnik" FromRole="Putnik" ToRole="Leti" />
+          <NavigationProperty Name="Ljubimacs" Relationship="Self.FK_Ljubimac_Putnik" FromRole="Putnik" ToRole="Ljubimac" />
+          <NavigationProperty Name="Rezervacijas" Relationship="Self.FK_Rezervacija_Putnik" FromRole="Putnik" ToRole="Rezervacija" />
           <NavigationProperty Name="Zalbas" Relationship="Self.FK_Zalba_Putnik" FromRole="Putnik" ToRole="Zalba" />
         </EntityType>
         <EntityType Name="Rezervacija">
           <Key>
             <PropertyRef Name="SifraRezervacije" />
-            <PropertyRef Name="SifraKarte" />
-          </Key>
-          <Property Name="SifraRezervacije" Type="Int32" Nullable="false" />
-          <Property Name="SifraKarte" Type="Int32" Nullable="false" />
-          <Property Name="Vreme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Karta" Relationship="Self.FK_Rezervacija_Karta" FromRole="Rezervacija" ToRole="Karta" />
-        </EntityType>
-        <EntityType Name="Vlasnik">
-          <Key>
             <PropertyRef Name="BrojPasosa" />
           </Key>
+          <Property Name="SifraRezervacije" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Vreme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="BrojPasosa" Type="Int32" Nullable="false" />
-          <Property Name="Ime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Prezime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="BrojTelefona" Type="Int32" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Ljubimacs" Relationship="Self.FK_Ljubimac_Vlasnik" FromRole="Vlasnik" ToRole="Ljubimac" />
+          <Property Name="SifraLeta" Type="Int32" Nullable="false" />
+          <Property Name="BrojCipa" Type="Int32" />
+          <NavigationProperty Name="Let" Relationship="Self.FK_Rezervacija_Let" FromRole="Rezervacija" ToRole="Let" />
+          <NavigationProperty Name="Putnik" Relationship="Self.FK_Rezervacija_Putnik" FromRole="Rezervacija" ToRole="Putnik" />
         </EntityType>
         <EntityType Name="Zalba">
           <Key>
             <PropertyRef Name="SifraZalbe" />
             <PropertyRef Name="BrojPasosa" />
           </Key>
-          <Property Name="SifraZalbe" Type="Int32" Nullable="false" />
+          <Property Name="SifraZalbe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BrojPasosa" Type="Int32" Nullable="false" />
           <Property Name="Komentar" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Putnik" Relationship="Self.FK_Zalba_Putnik" FromRole="Zalba" ToRole="Putnik" />
         </EntityType>
-        <Association Name="FK_CheckIn_Karta">
-          <End Role="Karta" Type="Self.Karta" Multiplicity="1" />
-          <End Role="CheckIn" Type="Self.CheckIn" Multiplicity="*" />
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Karta">
-              <PropertyRef Name="SifraKarte" />
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="CheckIn">
-              <PropertyRef Name="SifraKarte" />
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -496,62 +449,38 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Ljubimac_Karta">
-          <End Role="Karta" Type="Self.Karta" Multiplicity="1" />
-          <End Role="Ljubimac" Type="Self.Ljubimac" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Karta">
-              <PropertyRef Name="SifraKarte" />
-            </Principal>
-            <Dependent Role="Ljubimac">
-              <PropertyRef Name="SifraKarte" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Rezervacija_Karta">
-          <End Role="Karta" Type="Self.Karta" Multiplicity="1" />
-          <End Role="Rezervacija" Type="Self.Rezervacija" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Karta">
-              <PropertyRef Name="SifraKarte" />
-            </Principal>
-            <Dependent Role="Rezervacija">
-              <PropertyRef Name="SifraKarte" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Leti_Let">
+        <Association Name="FK_Rezervacija_Let">
           <End Role="Let" Type="Self.Let" Multiplicity="1" />
-          <End Role="Leti" Type="Self.Leti" Multiplicity="*" />
+          <End Role="Rezervacija" Type="Self.Rezervacija" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Let">
               <PropertyRef Name="SifraLeta" />
             </Principal>
-            <Dependent Role="Leti">
+            <Dependent Role="Rezervacija">
               <PropertyRef Name="SifraLeta" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Leti_Putnik">
+        <Association Name="FK_Ljubimac_Putnik">
           <End Role="Putnik" Type="Self.Putnik" Multiplicity="1" />
-          <End Role="Leti" Type="Self.Leti" Multiplicity="*" />
+          <End Role="Ljubimac" Type="Self.Ljubimac" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Putnik">
               <PropertyRef Name="BrojPasosa" />
             </Principal>
-            <Dependent Role="Leti">
+            <Dependent Role="Ljubimac">
               <PropertyRef Name="BrojPasosa" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Ljubimac_Vlasnik">
-          <End Role="Vlasnik" Type="Self.Vlasnik" Multiplicity="1" />
-          <End Role="Ljubimac" Type="Self.Ljubimac" Multiplicity="*" />
+        <Association Name="FK_Rezervacija_Putnik">
+          <End Role="Putnik" Type="Self.Putnik" Multiplicity="1" />
+          <End Role="Rezervacija" Type="Self.Rezervacija" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Vlasnik">
+            <Principal Role="Putnik">
               <PropertyRef Name="BrojPasosa" />
             </Principal>
-            <Dependent Role="Ljubimac">
+            <Dependent Role="Rezervacija">
               <PropertyRef Name="BrojPasosa" />
             </Dependent>
           </ReferentialConstraint>
@@ -568,167 +497,112 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="AvioKompanijaEntities" annotation:LazyLoadingEnabled="true">
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="AvioKompanijaEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
           <EntitySet Name="CheckIns" EntityType="Self.CheckIn" />
-          <EntitySet Name="Kartas" EntityType="Self.Karta" />
           <EntitySet Name="Lets" EntityType="Self.Let" />
-          <EntitySet Name="Letis" EntityType="Self.Leti" />
           <EntitySet Name="Ljubimacs" EntityType="Self.Ljubimac" />
           <EntitySet Name="Putniks" EntityType="Self.Putnik" />
           <EntitySet Name="Rezervacijas" EntityType="Self.Rezervacija" />
-          <EntitySet Name="Vlasniks" EntityType="Self.Vlasnik" />
           <EntitySet Name="Zalbas" EntityType="Self.Zalba" />
-          <AssociationSet Name="FK_CheckIn_Karta" Association="Self.FK_CheckIn_Karta">
-            <End Role="Karta" EntitySet="Kartas" />
-            <End Role="CheckIn" EntitySet="CheckIns" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
           </AssociationSet>
           <AssociationSet Name="FK_CheckIn_Putnik" Association="Self.FK_CheckIn_Putnik">
             <End Role="Putnik" EntitySet="Putniks" />
             <End Role="CheckIn" EntitySet="CheckIns" />
           </AssociationSet>
-          <AssociationSet Name="FK_Ljubimac_Karta" Association="Self.FK_Ljubimac_Karta">
-            <End Role="Karta" EntitySet="Kartas" />
-            <End Role="Ljubimac" EntitySet="Ljubimacs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Rezervacija_Karta" Association="Self.FK_Rezervacija_Karta">
-            <End Role="Karta" EntitySet="Kartas" />
+          <AssociationSet Name="FK_Rezervacija_Let" Association="Self.FK_Rezervacija_Let">
+            <End Role="Let" EntitySet="Lets" />
             <End Role="Rezervacija" EntitySet="Rezervacijas" />
           </AssociationSet>
-          <AssociationSet Name="FK_Leti_Let" Association="Self.FK_Leti_Let">
-            <End Role="Let" EntitySet="Lets" />
-            <End Role="Leti" EntitySet="Letis" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Leti_Putnik" Association="Self.FK_Leti_Putnik">
+          <AssociationSet Name="FK_Ljubimac_Putnik" Association="Self.FK_Ljubimac_Putnik">
             <End Role="Putnik" EntitySet="Putniks" />
-            <End Role="Leti" EntitySet="Letis" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ljubimac_Vlasnik" Association="Self.FK_Ljubimac_Vlasnik">
-            <End Role="Vlasnik" EntitySet="Vlasniks" />
             <End Role="Ljubimac" EntitySet="Ljubimacs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rezervacija_Putnik" Association="Self.FK_Rezervacija_Putnik">
+            <End Role="Putnik" EntitySet="Putniks" />
+            <End Role="Rezervacija" EntitySet="Rezervacijas" />
           </AssociationSet>
           <AssociationSet Name="FK_Zalba_Putnik" Association="Self.FK_Zalba_Putnik">
             <End Role="Putnik" EntitySet="Putniks" />
             <End Role="Zalba" EntitySet="Zalbas" />
           </AssociationSet>
-          <EntitySet Name="AspNetRoles" EntityType="AvioKompanijaModel.AspNetRole" />
-          <EntitySet Name="AspNetUserClaims" EntityType="AvioKompanijaModel.AspNetUserClaim" />
-          <EntitySet Name="AspNetUserLogins" EntityType="AvioKompanijaModel.AspNetUserLogin" />
-          <EntitySet Name="AspNetUsers" EntityType="AvioKompanijaModel.AspNetUser" />
-          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="AvioKompanijaModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUser" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="AvioKompanijaModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUser" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
-          </AssociationSet>
-          <AssociationSet Name="AspNetUserRoles" Association="AvioKompanijaModel.AspNetUserRoles">
-            <End Role="AspNetRole" EntitySet="AspNetRoles" />
-            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="AspNetRole">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUsers" Relationship="AvioKompanijaModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
-        </EntityType>
-        <EntityType Name="AspNetUserClaim">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUser" Relationship="AvioKompanijaModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
-        </EntityType>
-        <EntityType Name="AspNetUserLogin">
-          <Key>
-            <PropertyRef Name="LoginProvider" />
-            <PropertyRef Name="ProviderKey" />
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUser" Relationship="AvioKompanijaModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
-        </EntityType>
-        <EntityType Name="AspNetUser">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
-          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
-          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
-          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
-          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
-          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
-          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUserClaims" Relationship="AvioKompanijaModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
-          <NavigationProperty Name="AspNetUserLogins" Relationship="AvioKompanijaModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
-          <NavigationProperty Name="AspNetRoles" Relationship="AvioKompanijaModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
-        </EntityType>
-        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-          <End Type="AvioKompanijaModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="AvioKompanijaModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUser">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserClaim">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-          <End Type="AvioKompanijaModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="AvioKompanijaModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUser">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserLogin">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="AspNetUserRoles">
-          <End Type="AvioKompanijaModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
-          <End Type="AvioKompanijaModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="AvioKompanijaModelStoreContainer" CdmEntityContainer="AvioKompanijaEntities">
+        <EntityContainerMapping StorageEntityContainer="AvioKompanijaModelStoreContainer" CdmEntityContainer="AvioKompanijaEntities1">
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="AvioKompanijaModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="AvioKompanijaModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="AvioKompanijaModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="AvioKompanijaModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="CheckIns">
             <EntityTypeMapping TypeName="AvioKompanijaModel.CheckIn">
               <MappingFragment StoreEntitySet="CheckIn">
                 <ScalarProperty Name="BrojCheckIn" ColumnName="BrojCheckIn" />
-                <ScalarProperty Name="SifraKarte" ColumnName="SifraKarte" />
+                <ScalarProperty Name="SifraRezervacije" ColumnName="SifraRezervacije" />
                 <ScalarProperty Name="BrojPasosa" ColumnName="BrojPasosa" />
                 <ScalarProperty Name="Vreme" ColumnName="Vreme" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Kartas">
-            <EntityTypeMapping TypeName="AvioKompanijaModel.Karta">
-              <MappingFragment StoreEntitySet="Karta">
-                <ScalarProperty Name="SifraKarte" ColumnName="SifraKarte" />
-                <ScalarProperty Name="BrojKarte" ColumnName="BrojKarte" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -743,22 +617,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Letis">
-            <EntityTypeMapping TypeName="AvioKompanijaModel.Leti">
-              <MappingFragment StoreEntitySet="Leti">
-                <ScalarProperty Name="SifraLeta" ColumnName="SifraLeta" />
-                <ScalarProperty Name="BrojPasosa" ColumnName="BrojPasosa" />
-                <ScalarProperty Name="Vreme" ColumnName="Vreme" />
-                <ScalarProperty Name="Datum" ColumnName="Datum" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Ljubimacs">
             <EntityTypeMapping TypeName="AvioKompanijaModel.Ljubimac">
               <MappingFragment StoreEntitySet="Ljubimac">
                 <ScalarProperty Name="BrojCipa" ColumnName="BrojCipa" />
                 <ScalarProperty Name="BrojPasosa" ColumnName="BrojPasosa" />
-                <ScalarProperty Name="SifraKarte" ColumnName="SifraKarte" />
                 <ScalarProperty Name="Ime" ColumnName="Ime" />
                 <ScalarProperty Name="Rasa" ColumnName="Rasa" />
                 <ScalarProperty Name="Tezina" ColumnName="Tezina" />
@@ -781,19 +644,10 @@
             <EntityTypeMapping TypeName="AvioKompanijaModel.Rezervacija">
               <MappingFragment StoreEntitySet="Rezervacija">
                 <ScalarProperty Name="SifraRezervacije" ColumnName="SifraRezervacije" />
-                <ScalarProperty Name="SifraKarte" ColumnName="SifraKarte" />
                 <ScalarProperty Name="Vreme" ColumnName="Vreme" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Vlasniks">
-            <EntityTypeMapping TypeName="AvioKompanijaModel.Vlasnik">
-              <MappingFragment StoreEntitySet="Vlasnik">
                 <ScalarProperty Name="BrojPasosa" ColumnName="BrojPasosa" />
-                <ScalarProperty Name="Ime" ColumnName="Ime" />
-                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
-                <ScalarProperty Name="BrojTelefona" ColumnName="BrojTelefona" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="SifraLeta" ColumnName="SifraLeta" />
+                <ScalarProperty Name="BrojCipa" ColumnName="BrojCipa" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -806,57 +660,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="AspNetRoles">
-            <EntityTypeMapping TypeName="AvioKompanijaModel.AspNetRole">
-              <MappingFragment StoreEntitySet="AspNetRoles">
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUserClaims">
-            <EntityTypeMapping TypeName="AvioKompanijaModel.AspNetUserClaim">
-              <MappingFragment StoreEntitySet="AspNetUserClaims">
-                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
-                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUserLogins">
-            <EntityTypeMapping TypeName="AvioKompanijaModel.AspNetUserLogin">
-              <MappingFragment StoreEntitySet="AspNetUserLogins">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
-                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUsers">
-            <EntityTypeMapping TypeName="AvioKompanijaModel.AspNetUser">
-              <MappingFragment StoreEntitySet="AspNetUsers">
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
-                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
-                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
-                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
-                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
-                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <AssociationSetMapping Name="AspNetUserRoles" TypeName="AvioKompanijaModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
-            <EndProperty Name="AspNetUser">
-              <ScalarProperty Name="Id" ColumnName="UserId" />
-            </EndProperty>
-            <EndProperty Name="AspNetRole">
+            <EndProperty Name="AspNetRoles">
               <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>
