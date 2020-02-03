@@ -7,23 +7,26 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AerConnect
+namespace AerConnect.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class AspNetRole
+    public partial class Let
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public AspNetRole()
+        public Let()
         {
-            this.AspNetUsers = new HashSet<AspNetUser>();
+            this.Rezervacijas = new HashSet<Rezervacija>();
         }
     
-        public string Id { get; set; }
-        public string Name { get; set; }
+        public int SifraLeta { get; set; }
+        public string DestinacijaOd { get; set; }
+        public string DestinacijaDo { get; set; }
+        public string DatumPolaska { get; set; }
+        public string DatumPovratka { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
+        public virtual ICollection<Rezervacija> Rezervacijas { get; set; }
     }
 }

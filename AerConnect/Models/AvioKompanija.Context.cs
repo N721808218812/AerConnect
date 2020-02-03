@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AerConnect
+namespace AerConnect.Models
 {
     using System;
     using System.Data.Entity;
