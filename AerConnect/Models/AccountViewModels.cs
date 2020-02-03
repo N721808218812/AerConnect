@@ -82,7 +82,7 @@ namespace AerConnect.Models
 
         [Required]
         [Display(Name ="Broj Pasosa")]
-        [RegularExpression("([0-9]{6})",ErrorMessage ="Maksimalna duzina pasosa je 6 karaktera")]
+        [RegularExpression("([0-9]{6})",ErrorMessage ="Minimalna duzina pasosa je 6 karaktera")]
         public int BrojPasosa { get; set; }
 
         [Required]

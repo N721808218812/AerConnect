@@ -20,17 +20,14 @@ namespace AerConnect.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int BrojCheckIn { get; set; }
 
-        [Required]
-        [MaxLength(30)]
-        [Display(Name = "Šifra karte")]
-        [MinLength(1)]
-        public int SifraKarte { get; set; }
+        
 
         [Required]
         [MaxLength(6)]
         [Display(Name = "Broj pasoša")]
         [MinLength(6)]
         public int SifraRezervacije { get; set; }
+
         public int BrojPasosa { get; set; }
 
         [RegularExpression("[0-9]{2}[:][0-9]{2}",ErrorMessage ="Morate uneti vreme u formatu HH:MM (**:**)")]

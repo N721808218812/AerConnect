@@ -20,6 +20,8 @@ namespace AerConnect.Controllers
         {
             return View();
         }
+        [Authorize(Roles = "Radnik")]
+        
         public ActionResult KreirajLet()
         {
             return View();
@@ -28,6 +30,7 @@ namespace AerConnect.Controllers
         [HttpPost]
         public ActionResult KreirajLet(Let let )
         {
+          
             if (ModelState.IsValid)
             {
                 Let novi = new Let()
@@ -39,16 +42,42 @@ namespace AerConnect.Controllers
                     DatumPovratka=let.DatumPovratka
                     
                 };
-                
-                entites.Lets.Add(novi);
-                entites.SaveChanges();
-                return View("UploadSuccesfull");
+                if (entites.Lets.Any(l => l.SifraLeta.Equals(let.SifraLeta)))
+                {
+                    return View("PostojecaSifra");
+                }
+                else
+                {
 
+                    entites.Lets.Add(novi);
+                    entites.SaveChanges();
+                    return View("UploadSuccesfull");
+                }
             }
             else
             {
                 return View("KreirajLet",let);
             }
+        }
+
+        public ActionResult SviLetovi()
+        {
+            return View(UzmiSveLetove());
+        }
+        public IEnumerable <Let> UzmiSveLetove()
+        {
+            List<Let> lista = new List<Let>();
+           foreach(Let baza in entites.Lets)
+            {
+                Let l = new Let();
+                l.SifraLeta = baza.SifraLeta;
+                l.DatumPolaska = baza.DatumPolaska;
+                l.DatumPovratka = baza.DatumPovratka;
+                l.DestinacijaDo = baza.DestinacijaDo;
+                l.DestinacijaOd = baza.DestinacijaOd;
+                lista.Add(l);
+            }
+            return lista;
         }
     }
 }
