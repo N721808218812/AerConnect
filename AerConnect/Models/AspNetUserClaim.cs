@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AerConnect
+namespace AerConnect.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class CheckIn
+    public partial class AspNetUserClaim
     {
-        public int BrojCheckIn { get; set; }
-        public int SifraRezervacije { get; set; }
-        public int BrojPasosa { get; set; }
-        public string Vreme { get; set; }
+        public int Id { get; set; }
+        public string UserId { get; set; }
+        public string ClaimType { get; set; }
+        public string ClaimValue { get; set; }
     
-        public virtual Putnik Putnik { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

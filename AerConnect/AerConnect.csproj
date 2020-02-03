@@ -172,34 +172,34 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AspNetRole.cs">
+    <Compile Include="Models\AspNetRole.cs">
       <DependentUpon>AvioKompanija.tt</DependentUpon>
     </Compile>
-    <Compile Include="AspNetUser.cs">
+    <Compile Include="Models\AspNetUser.cs">
       <DependentUpon>AvioKompanija.tt</DependentUpon>
     </Compile>
-    <Compile Include="AspNetUserClaim.cs">
+    <Compile Include="Models\AspNetUserClaim.cs">
       <DependentUpon>AvioKompanija.tt</DependentUpon>
     </Compile>
-    <Compile Include="AspNetUserLogin.cs">
+    <Compile Include="Models\AspNetUserLogin.cs">
       <DependentUpon>AvioKompanija.tt</DependentUpon>
     </Compile>
-    <Compile Include="AvioKompanija.Context.cs">
+    <Compile Include="Models\AvioKompanija.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AvioKompanija.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="AvioKompanija.cs">
+    <Compile Include="Models\AvioKompanija.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AvioKompanija.tt</DependentUpon>
     </Compile>
-    <Compile Include="AvioKompanija.Designer.cs">
+    <Compile Include="Models\AvioKompanija.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AvioKompanija.edmx</DependentUpon>
     </Compile>
-    <Compile Include="CheckIn.cs">
+    <Compile Include="Models\CheckIn.cs">
       <DependentUpon>AvioKompanija.tt</DependentUpon>
     </Compile>
     <Compile Include="Helper\CustomPasswordHasher.cs" />
@@ -218,34 +218,34 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Let.cs">
+    <Compile Include="Models\Let.cs">
       <DependentUpon>AvioKompanija.tt</DependentUpon>
     </Compile>
-    <Compile Include="Ljubimac.cs">
+    <Compile Include="Models\Ljubimac.cs">
       <DependentUpon>AvioKompanija.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Putnik.cs">
+    <Compile Include="Models\Putnik.cs">
       <DependentUpon>AvioKompanija.tt</DependentUpon>
     </Compile>
-    <Compile Include="Rezervacija.cs">
+    <Compile Include="Models\Rezervacija.cs">
       <DependentUpon>AvioKompanija.tt</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
-    <Compile Include="Zalba.cs">
+    <Compile Include="Models\Zalba.cs">
       <DependentUpon>AvioKompanija.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AvioKompanija.Context.tt">
+    <Content Include="Models\AvioKompanija.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>AvioKompanija.edmx</DependentUpon>
       <LastGenOutput>AvioKompanija.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="AvioKompanija.tt">
+    <Content Include="Models\AvioKompanija.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>AvioKompanija.edmx</DependentUpon>
       <LastGenOutput>AvioKompanija.cs</LastGenOutput>
@@ -260,11 +260,11 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="AvioKompanija.edmx">
+    <EntityDeploy Include="Models\AvioKompanija.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>AvioKompanija.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="AvioKompanija.edmx.diagram">
+    <Content Include="Models\AvioKompanija.edmx.diagram">
       <DependentUpon>AvioKompanija.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -312,12 +312,13 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\UploadSuccesfull.cshtml" />
+    <Content Include="Views\Flight\KreirajLet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\images\" />
     <Folder Include="Views\CheckIn\" />
-    <Folder Include="Views\Flight\" />
     <Folder Include="Views\Ticket\" />
   </ItemGroup>
   <ItemGroup>
