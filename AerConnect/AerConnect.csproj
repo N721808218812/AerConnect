@@ -314,11 +314,12 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\UploadSuccesfull.cshtml" />
     <Content Include="Views\Flight\KreirajLet.cshtml" />
+    <Content Include="Views\CheckIn\CheckIn.cshtml" />
+    <Content Include="Views\CheckIn\NePostojiPutnik.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\images\" />
-    <Folder Include="Views\CheckIn\" />
     <Folder Include="Views\Ticket\" />
   </ItemGroup>
   <ItemGroup>

@@ -11,10 +11,14 @@ namespace AerConnect.Controllers
     {
         AvioKompanijaEntities1 entities;
         // GET: CheckIn
-        public ActionResult Index()
+        public CheckInController()
         {
             entities = new AvioKompanijaEntities1();
-            return View("Checkin");
+        }
+        public ActionResult Index()
+        {
+            
+            return View();
         }
 
         public ActionResult CheckIn()
@@ -23,26 +27,33 @@ namespace AerConnect.Controllers
         }
 
         [HttpPost]
-        public ActionResult CheckIn(int brojPasosa, int sifraRezervacije)
+        public ActionResult CheckIn(CheckIn checkin)
         {
             if(ModelState.IsValid)
             {
                 CheckIn novi = new CheckIn()
                 {
-                    BrojPasosa = brojPasosa,
-                    SifraRezervacije = sifraRezervacije,
-                    Vreme = DateTime.Now.ToString()
+                    BrojPasosa =checkin.BrojPasosa,
+                    SifraRezervacije = checkin.SifraRezervacije                    
                 };
-                entities.CheckIns.Add(novi);
-                entities.SaveChanges();
+                if((entities.Putniks.Any(l=>l.BrojPasosa.Equals(checkin.BrojPasosa))) && (entities.Rezervacijas.Any(l => l.SifraRezervacije.Equals(checkin.SifraRezervacije))))
+                {
+                    entities.CheckIns.Add(novi);
+                    entities.SaveChanges();
+                    return View("UploadSuccesfull");
+
+                }
+                else
+                {
+                    return View("NePostojiPutnik");
+                }
+                
 
             }
             else
             {
-                return View();
-            }
-
-            return View();
+                return View("CheckIn",checkin);
+            }                  
 
         }
 
