@@ -11,7 +11,8 @@ namespace AerConnect.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Putnik
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,14 +23,38 @@ namespace AerConnect.Models
             this.Rezervacijas = new HashSet<Rezervacija>();
             this.Zalbas = new HashSet<Zalba>();
         }
-    
+
+        [Required]
+        [Display(Name = "Broj Pasosa")]
+        [RegularExpression("([0-9]{6})", ErrorMessage = "Maksimalna duzina pasosa je 6 karaktera")]
         public int BrojPasosa { get; set; }
+
+        [Required]
+        [Display(Name = "Ime")]
+        [StringLength(30, ErrorMessage = "Minimalna duzina mora da bude najmanje {2} karaktera dugacka ", MinimumLength = 2)]
         public string Ime { get; set; }
+
+        [Required]
+        [Display(Name = "Prezime")]
+        [StringLength(30, ErrorMessage = "Minimalna duzina mora da bude najmanje {2} karaktera dugacka ", MinimumLength = 2)]
         public string Prezime { get; set; }
+
+        [Required]
+        [Display(Name = "Broj Telefona")]
+        [RegularExpression("([06][0-9]{7,8})", ErrorMessage = "Morate uneti format 06*******(*)")]
         public int BrojTelefona { get; set; }
+
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "Minimalna duzina mora da bude najmanje {2} karaktera dugacka ", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Sifra")]
         public string Password { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CheckIn> CheckIns { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

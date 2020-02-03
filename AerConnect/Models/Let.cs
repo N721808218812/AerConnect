@@ -11,7 +11,8 @@ namespace AerConnect.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Let
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,13 +20,27 @@ namespace AerConnect.Models
         {
             this.Rezervacijas = new HashSet<Rezervacija>();
         }
-    
+
+        [Required]
+        [StringLength(100, ErrorMessage = "Minimalna duzina mora da bude najmanje {2} karaktera dugacka ", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Sifra Leta")]
         public int SifraLeta { get; set; }
+
+        [Display(Name = "Destinacija od")]
+        [StringLength(50, ErrorMessage = "Minimalna duzina mora da bude najmanje {2} karaktera dugacka ", MinimumLength = 1)]
         public string DestinacijaOd { get; set; }
+        [StringLength(50, ErrorMessage = "Minimalna duzina mora da bude najmanje {2} karaktera dugacka ", MinimumLength = 1)]
+        [Display(Name = "Destinacija do")]
         public string DestinacijaDo { get; set; }
+        [Display(Name = "Datum Polaska")]
+        [RegularExpression("([0-9]{2}[/][0-9]{2}[/](202)[0-9])", ErrorMessage = "Morate uneti datum u formatu D/M/G (**/**/202*)")]
         public string DatumPolaska { get; set; }
+        [Display(Name = "Datum Povratka")]
+        [RegularExpression("([0-9]{2}[/][0-9]{2}[/](202)[0-9])", ErrorMessage = "Morate uneti datum u formatu D/M/G (**/**/202*)")]
         public string DatumPovratka { get; set; }
-    
+
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Rezervacija> Rezervacijas { get; set; }
     }
