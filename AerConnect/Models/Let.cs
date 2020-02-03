@@ -22,7 +22,7 @@ namespace AerConnect.Models
         }
 
         [Required]
-        [StringLength(100, ErrorMessage = "Minimalna duzina mora da bude najmanje {2} karaktera dugacka ", MinimumLength = 6)]
+        
         [DataType(DataType.Password)]
         [Display(Name = "Sifra Leta")]
         public int SifraLeta { get; set; }

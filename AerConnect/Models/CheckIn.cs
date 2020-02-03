@@ -20,6 +20,7 @@ namespace AerConnect.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int BrojCheckIn { get; set; }
 
+        
 
 
         [Required]
@@ -32,6 +33,7 @@ namespace AerConnect.Models
         [MaxLength(6)]
         [Display(Name = "Broj pasoša")]
         [MinLength(6)]
+        public int SifraRezervacije { get; set; }
         public int BrojPasosa { get; set; }
 
         
