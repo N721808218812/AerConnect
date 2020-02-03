@@ -11,11 +11,24 @@ namespace AerConnect.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     
     public partial class Zalba
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int SifraZalbe { get; set; }
+
+        [Required]
+        [MaxLength(6)]
+        [Display(Name = "Broj pasoša")]
+        [MinLength(6)]
         public int BrojPasosa { get; set; }
+
+        [Required]
+        [MaxLength(300)]
+        [Display(Name = "Unesite Vas komentar")]
+        [StringLength(30, ErrorMessage = "Komentar mora biti do 300 karaktera.", MinimumLength = 1)]
         public string Komentar { get; set; }
     
         public virtual Putnik Putnik { get; set; }

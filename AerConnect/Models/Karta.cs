@@ -11,6 +11,8 @@ namespace AerConnect.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     
     public partial class Karta
     {
@@ -21,8 +23,10 @@ namespace AerConnect.Models
             this.Ljubimacs = new HashSet<Ljubimac>();
             this.Rezervacijas = new HashSet<Rezervacija>();
         }
-    
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int SifraKarte { get; set; }
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int BrojKarte { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
