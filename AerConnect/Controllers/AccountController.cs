@@ -158,8 +158,8 @@ namespace AerConnect.Controllers
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
             CustomPasswordHasher m = new CustomPasswordHasher();
-            
-            
+
+
 
 
             if (ModelState.IsValid)
@@ -169,18 +169,21 @@ namespace AerConnect.Controllers
                     Password = m.HashPassword(model.Password),
                     Ime = model.Ime,
                     Prezime = model.Prezime,
-                    BrojPasosa=model.BrojPasosa,
-                    BrojTelefona=model.BrojTelefona
+                    BrojPasosa = model.BrojPasosa,
+                    BrojTelefona = model.BrojTelefona
 
 
                 };
                 entities.Putniks.Add(putnik);
                 entities.SaveChanges();
 
+            }
 
-                 
-                 
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+
+
+
+
+            var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
