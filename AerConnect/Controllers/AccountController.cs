@@ -25,10 +25,10 @@ namespace AerConnect.Controllers
         public AccountController()
         {
             entities = new AvioKompanijaEntities1();
-           
+
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -40,9 +40,9 @@ namespace AerConnect.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -128,7 +128,7 @@ namespace AerConnect.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -158,34 +158,50 @@ namespace AerConnect.Controllers
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
             CustomPasswordHasher m = new CustomPasswordHasher();
-            
-            
-
-
-            if (ModelState.IsValid)
+           
+           
+            if (entities.Putniks.Any(l => l.BrojPasosa.Equals(model.BrojPasosa)))
             {
-                Putnik putnik = new Putnik {
-                    Email = model.Email,
-                    Password = m.HashPassword(model.Password),
-                    Ime = model.Ime,
-                    Prezime = model.Prezime,
-                    BrojPasosa=model.BrojPasosa,
-                    BrojTelefona=model.BrojTelefona
 
-
-                };
-                entities.Putniks.Add(putnik);
-                entities.SaveChanges();
-
-
-                 
-                 
+                return View("PostojeciPutnik");
+            }
+            else
+            {
+                
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
+                if (ModelState.IsValid)
+                {
+                    Putnik putnik = new Putnik
+                    {
+                        Email = model.Email,
+                        Password = m.HashPassword(model.Password),
+                        Ime = model.Ime,
+                        Prezime = model.Prezime,
+                        BrojPasosa = model.BrojPasosa,
+                        BrojTelefona = model.BrojTelefona
+
+
+                    };
+                    if (entities.Putniks.Any(l => l.BrojPasosa.Equals(model.BrojPasosa)))
+                    {
+                        return View("PostojeciPutnik");
+
+                    }
+                    else
+                    {
+
+                        entities.Putniks.Add(putnik);
+                        entities.SaveChanges();
+                        return RedirectToAction("Index", "Home");
+                    }
+
+                }
+
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -195,11 +211,13 @@ namespace AerConnect.Controllers
                     return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
-            }
+               
 
-            // If we got this far, something failed, redisplay form
-            return View(model);
-        }
+                // If we got this far, something failed, redisplay form
+                return View(model);
+            }
+         }
+
 
         //
         // GET: /Account/ConfirmEmail

@@ -23,14 +23,14 @@ namespace AerConnect.Models
         
 
 
-        [Required]
-        
+        [Required]        
         [Display(Name = "Šifra rezervacije")]
-      
+        [RegularExpression("([0-9]{1,})", ErrorMessage = "Šifra rezervacije mora biti u numeričkom formatu")]
         public int SifraRezervacije { get; set; }
 
         [Required]
-        [Display(Name = "Broj pasoša")]  
+        [Display(Name = "Broj pasoša")]
+        [RegularExpression("([0-9]{6,10})", ErrorMessage = "Broj pasoša mora biti u numeričkom formatu ******")]
         public int BrojPasosa { get; set; }
 
         
