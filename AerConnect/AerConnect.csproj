@@ -322,6 +322,7 @@
     <Content Include="Views\CheckIn\EvidentirajZalbu.cshtml" />
     <Content Include="Views\CheckIn\VecObavljenCheckIn.cshtml" />
     <Content Include="Views\CheckIn\UspesanCheckIn.cshtml" />
+    <Content Include="Views\Reservation\Rezervacija.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

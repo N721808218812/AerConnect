@@ -1,35 +1,35 @@
 ﻿@model  IEnumerable<AerConnect.Models.Let>
 
-    @{
-        ViewBag.Title = "SviLetovi";
-    }
+@{
+    ViewBag.Title = "SviLetovi";
+}
 
-    <h2>SviLetovi</h2>
+<h2>SviLetovi</h2>
 
 
- 
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.SifraLeta)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DestinacijaOd)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DestinacijaDo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DatumPolaska)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DatumPovratka)
-            </th>
-            <th></th>
-        </tr>
 
-        @foreach (var item in Model)
-        {
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SifraLeta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DestinacijaOd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DestinacijaDo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DatumPolaska)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DatumPovratka)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.SifraLeta)
@@ -48,8 +48,9 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.SifraLeta }) |
-            @Html.ActionLink("Details", "Details", new { id = item.SifraLeta }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.SifraLeta })
+                @Html.ActionLink("Details", "Details", new { id = item.SifraLeta }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.SifraLeta }) |
+                @Html.ActionLink("Rezervisi Kartu", "Rezervacija", "Reservation", new { id = item.SifraLeta }, null)
             </td>
         </tr>
-        }
+    }

@@ -159,45 +159,44 @@ namespace AerConnect.Controllers
         {
             CustomPasswordHasher m = new CustomPasswordHasher();
            
-
-            if (ModelState.IsValid)
-            {
-                Putnik putnik = new Putnik
-                {
-                    Email = model.Email,
-                    Password = m.HashPassword(model.Password),
-                    Ime = model.Ime,
-                    Prezime = model.Prezime,
-                    BrojPasosa = model.BrojPasosa,
-                    BrojTelefona = model.BrojTelefona
-
-
-                };
-                if (entities.Putniks.Any(l => l.BrojPasosa.Equals(model.BrojPasosa)))
-                {
-                    return View("PostojeciPutnik");
-                    
-                }
-                else
-                {
-                   
-                    entities.Putniks.Add(putnik);
-                    entities.SaveChanges();
-                    return RedirectToAction("Index", "Home");
-                }
-                 
-            }
            
-
-            var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-          var result = await UserManager.CreateAsync(user, model.Password);
             if (entities.Putniks.Any(l => l.BrojPasosa.Equals(model.BrojPasosa)))
             {
-                return View(model);
 
+                return View("PostojeciPutnik");
             }
             else
             {
+                
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var result = await UserManager.CreateAsync(user, model.Password);
+                if (ModelState.IsValid)
+                {
+                    Putnik putnik = new Putnik
+                    {
+                        Email = model.Email,
+                        Password = m.HashPassword(model.Password),
+                        Ime = model.Ime,
+                        Prezime = model.Prezime,
+                        BrojPasosa = model.BrojPasosa,
+                        BrojTelefona = model.BrojTelefona
+
+
+                    };
+                    if (entities.Putniks.Any(l => l.BrojPasosa.Equals(model.BrojPasosa)))
+                    {
+                        return View("PostojeciPutnik");
+
+                    }
+                    else
+                    {
+
+                        entities.Putniks.Add(putnik);
+                        entities.SaveChanges();
+                        return RedirectToAction("Index", "Home");
+                    }
+
+                }
 
                 if (result.Succeeded)
                 {
@@ -212,12 +211,12 @@ namespace AerConnect.Controllers
                     return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
-
+               
 
                 // If we got this far, something failed, redisplay form
                 return View(model);
             }
-    }
+         }
 
 
         //
