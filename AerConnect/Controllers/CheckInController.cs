@@ -34,13 +34,18 @@ namespace AerConnect.Controllers
                 CheckIn novi = new CheckIn()
                 {
                     BrojPasosa =checkin.BrojPasosa,
-                    SifraRezervacije = checkin.SifraRezervacije                    
+                    SifraRezervacije = checkin.SifraRezervacije,
+                    Vreme= DateTime.Now.ToString("h:mm:ss tt")
                 };
-                if((entities.Putniks.Any(l=>l.BrojPasosa.Equals(checkin.BrojPasosa))) && (entities.Rezervacijas.Any(l => l.SifraRezervacije.Equals(checkin.SifraRezervacije))))
+                if((entities.Rezervacijas.Any(l=>l.BrojPasosa.Equals(checkin.BrojPasosa))) && (entities.Rezervacijas.Any(l => l.SifraRezervacije.Equals(checkin.SifraRezervacije))))
                 {
+                    if((entities.CheckIns.Any(l => l.SifraRezervacije.Equals(checkin.SifraRezervacije))) && (entities.Rezervacijas.Any(l => l.BrojPasosa.Equals(checkin.BrojPasosa))))
+                    {
+                        return View("VecObavljenCheckIn");
+                    }
                     entities.CheckIns.Add(novi);
                     entities.SaveChanges();
-                    return View("UploadSuccesfull");
+                    return View("UspesanCheckIn");
 
                 }
                 else
