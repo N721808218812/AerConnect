@@ -55,7 +55,42 @@ namespace AerConnect.Controllers
                 return View("CheckIn",checkin);
             }                  
 
+        }//checkin
+
+        public ActionResult EvidentirajZalbu()
+        {
+            return View();
         }
+
+        [HttpPost]
+        public ActionResult EvidentirajZalbu(Zalba zalba)
+        {
+            if (ModelState.IsValid)
+            {
+                Zalba nova = new Zalba()
+                {
+                    BrojPasosa = zalba.BrojPasosa,
+                    Komentar = zalba.Komentar
+                };
+                if ((entities.Putniks.Any(l => l.BrojPasosa.Equals(zalba.BrojPasosa))))
+                {
+                    entities.Zalbas.Add(nova);
+                    entities.SaveChanges();
+                    return View("UploadSuccesfull");
+
+                }
+                else
+                {
+                    return View("NePostojiPutnik");
+                }
+
+
+            }
+            else
+            {
+                return View("Zalba", zalba);
+            }
+        }//evidentirajZalbu
 
     }//class
 }//namespace
