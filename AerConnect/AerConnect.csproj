@@ -324,6 +324,9 @@
     <Content Include="Views\Reservation\Rezervacija.cshtml" />
     <Content Include="Views\CheckIn\EvidentiranaZalba.cshtml" />
     <Content Include="Views\CheckIn\UspesanCheckIn.cshtml" />
+    <Content Include="Views\Reservation\Rezervacija.cshtml" />
+    <Content Include="Views\Flight\Edit.cshtml" />
+    <Content Include="Views\Flight\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
