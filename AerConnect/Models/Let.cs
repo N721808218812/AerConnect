@@ -15,19 +15,19 @@ namespace AerConnect.Models
 
     public partial class Let
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Let()
         {
             this.Rezervacijas = new HashSet<Rezervacija>();
         }
 
-        [Required]
+       // [Required]
         
-        [DataType(DataType.Password)]
-        [Display(Name = "Sifra Leta")]
+        //[DataType(DataType.Password)]
+       // [Display(Name = "Sifra Leta")]
         public int SifraLeta { get; set; }
 
-        [Required]
+       [Required]
         [Display(Name = "Destinacija od")]
         [StringLength(50, ErrorMessage = "Minimalna duzina mora da bude najmanje {2} karaktera dugacka ", MinimumLength = 1)]
         public string DestinacijaOd { get; set; }
@@ -35,17 +35,17 @@ namespace AerConnect.Models
         [Display(Name = "Destinacija do")]
         [Required]
         public string DestinacijaDo { get; set; }
-        [Display(Name = "Datum Polaska")]
+       [Display(Name = "Datum Polaska")]
         [Required]
         [RegularExpression("([0-9]{2}[/][0-9]{2}[/](202)[0-9])", ErrorMessage = "Morate uneti datum u formatu D/M/G (**/**/202*)")]
         public string DatumPolaska { get; set; }
-        [Required]
-        [Display(Name = "Datum Povratka")]
-        [RegularExpression("([0-9]{2}[/][0-9]{2}[/](202)[0-9])", ErrorMessage = "Morate uneti datum u formatu D/M/G (**/**/202*)")]
+       [Required]
+       [Display(Name = "Datum Povratka")]
+       [RegularExpression("([0-9]{2}[/][0-9]{2}[/](202)[0-9])", ErrorMessage = "Morate uneti datum u formatu D/M/G (**/**/202*)")]
         public string DatumPovratka { get; set; }
 
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+       [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Rezervacija> Rezervacijas { get; set; }
     }
 }
