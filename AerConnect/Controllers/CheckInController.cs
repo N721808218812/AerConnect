@@ -15,12 +15,13 @@ namespace AerConnect.Controllers
         {
             entities = new AvioKompanijaEntities1();
         }
+        [Authorize]
         public ActionResult Index()
         {
             
-            return View();
+            return View("CheckIn");
         }
-
+        [Authorize]
         public ActionResult CheckIn()
         {
             return View();
