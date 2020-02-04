@@ -15,12 +15,14 @@ namespace AerConnect.Controllers
         {
             entities = new AvioKompanijaEntities1();
         }
+
         [Authorize]
         public ActionResult Index()
         {
             
-            return View("CheckIn");
+            return View();
         }
+
         [Authorize]
         public ActionResult CheckIn()
         {
@@ -63,6 +65,7 @@ namespace AerConnect.Controllers
 
         }//checkin
 
+        [Authorize]
         public ActionResult EvidentirajZalbu()
         {
             return View();
@@ -78,11 +81,11 @@ namespace AerConnect.Controllers
                     BrojPasosa = zalba.BrojPasosa,
                     Komentar = zalba.Komentar
                 };
-                if ((entities.Putniks.Any(l => l.BrojPasosa.Equals(zalba.BrojPasosa))))
+                if ((entities.CheckIns.Any(l => l.BrojPasosa.Equals(zalba.BrojPasosa))) )
                 {
                     entities.Zalbas.Add(nova);
                     entities.SaveChanges();
-                    return View("UploadSuccesfull");
+                    return View("EvidentiranaZalba");
 
                 }
                 else
@@ -94,9 +97,52 @@ namespace AerConnect.Controllers
             }
             else
             {
-                return View("Zalba", zalba);
+                return View("EvidentirajZalbu", zalba);
             }
         }//evidentirajZalbu
+
+        [Authorize]
+        public ActionResult UspesanCheckIn()
+        {
+            return View(UzmiSveCheckIn());
+        }
+        [Authorize]
+        public IEnumerable<CheckIn> UzmiSveCheckIn()
+        {
+            List<CheckIn> lista = new List<CheckIn>();
+            foreach (CheckIn baza in entities.CheckIns)
+            {
+                CheckIn l = new CheckIn();
+                l.BrojCheckIn = baza.BrojCheckIn;
+                l.BrojPasosa = baza.BrojPasosa;
+                l.SifraRezervacije = baza.SifraRezervacije;
+                l.Vreme = baza.Vreme;                
+                lista.Add(l);
+            }
+            return lista;
+        }//UzmiSveCheckIn
+
+        //public ActionResult IzmeniCheckIn(int id)
+        //{
+
+        //    return View();
+        //}
+
+        public ActionResult Otkazi(int id) //nije dobro
+        {
+            
+            
+                CheckIn checkin = new CheckIn();
+
+
+                    checkin.BrojCheckIn = id;
+                
+                entities.CheckIns.Remove(checkin);
+                entities.SaveChanges();
+            
+
+            return View(UzmiSveCheckIn());
+        }//otkazi
 
     }//class
 }//namespace

@@ -1,12 +1,48 @@
-﻿
+﻿@model IEnumerable<AerConnect.Models.CheckIn>
+
 @{
     ViewBag.Title = "UspesanCheckIn";
 }
 
-<h2>Uspesno ste obavili check in!</h2>
+<h2>UspesanCheckIn</h2>
 
-<script>
-window.setTimeout(function(){
-    window.location.href = 'http://localhost:63817/';
-}, 1000);
-</script>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BrojCheckIn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SifraRezervacije)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BrojPasosa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vreme)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BrojCheckIn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SifraRezervacije)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BrojPasosa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vreme)
+        </td>
+        <td>
+            @Html.ActionLink("Izmeni", "IzmeniCheckIn", new {  id=item.BrojCheckIn  }) |           
+            @Html.ActionLink("Otkazi", "Otkazi", new { id=item.BrojCheckIn  })
+        </td>
+    </tr>
+}
+
+</table>

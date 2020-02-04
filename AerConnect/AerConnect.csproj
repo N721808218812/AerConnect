@@ -321,8 +321,9 @@
     <Content Include="Views\Shared\PostojeciPutnik.cshtml" />
     <Content Include="Views\CheckIn\EvidentirajZalbu.cshtml" />
     <Content Include="Views\CheckIn\VecObavljenCheckIn.cshtml" />
-    <Content Include="Views\CheckIn\UspesanCheckIn.cshtml" />
     <Content Include="Views\Reservation\Rezervacija.cshtml" />
+    <Content Include="Views\CheckIn\EvidentiranaZalba.cshtml" />
+    <Content Include="Views\CheckIn\UspesanCheckIn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
