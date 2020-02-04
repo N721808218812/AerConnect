@@ -318,6 +318,7 @@
     <Content Include="Views\Flight\SviLetovi.cshtml" />
     <Content Include="Views\CheckIn\CheckIn.cshtml" />
     <Content Include="Views\CheckIn\NePostojiPutnik.cshtml" />
+    <Content Include="Views\Shared\PostojeciPutnik.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
