@@ -327,7 +327,6 @@
     <Content Include="Views\Reservation\Rezervacija.cshtml" />
     <Content Include="Views\Flight\Edit.cshtml" />
     <Content Include="Views\Flight\Delete.cshtml" />
-    <Content Include="Views\CheckIn\IzmeniCheckIn.cshtml" />
     <Content Include="Views\CheckIn\SviCheckIn.cshtml" />
     <Content Include="Views\CheckIn\Uspesno.cshtml" />
     <Content Include="Views\CheckIn\Otkazi.cshtml" />
@@ -335,6 +334,7 @@
     <Content Include="Views\Reservation\DeleteReservation.cshtml" />
     <Content Include="Views\Reservation\UploadSuccesfullReservation.cshtml" />
     <Content Include="Views\Reservation\PostojecaSifraReservacija.cshtml" />
+    <Content Include="Views\CheckIn\IzmeniCheckIn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
