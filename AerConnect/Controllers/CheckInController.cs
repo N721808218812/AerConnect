@@ -1,6 +1,7 @@
 ﻿using AerConnect.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -48,7 +49,7 @@ namespace AerConnect.Controllers
                     }
                     entities.CheckIns.Add(novi);
                     entities.SaveChanges();
-                    return View("UspesanCheckIn");
+                    return View("Uspesno");
 
                 }
                 else
@@ -101,11 +102,11 @@ namespace AerConnect.Controllers
             }
         }//evidentirajZalbu
 
-        [Authorize]
-        public ActionResult UspesanCheckIn()
+        public ActionResult SviCheckIn()
         {
             return View(UzmiSveCheckIn());
         }
+
         [Authorize]
         public IEnumerable<CheckIn> UzmiSveCheckIn()
         {
@@ -116,32 +117,70 @@ namespace AerConnect.Controllers
                 l.BrojCheckIn = baza.BrojCheckIn;
                 l.BrojPasosa = baza.BrojPasosa;
                 l.SifraRezervacije = baza.SifraRezervacije;
-                l.Vreme = baza.Vreme;                
+                l.Vreme = baza.Vreme;
                 lista.Add(l);
             }
             return lista;
         }//UzmiSveCheckIn
 
-        //public ActionResult IzmeniCheckIn(int id)
-        //{
-
-        //    return View();
-        //}
-
-        public ActionResult Otkazi(int id) //nije dobro
+        [Authorize]
+        public ActionResult IzmeniCheckIn(int id)
         {
-            
-            
-                CheckIn checkin = new CheckIn();
+
+            return View(entities.CheckIns.Where(x=>x.BrojCheckIn==id).FirstOrDefault());
+        }
+
+        [HttpPost]
+        public ActionResult IzmeniCheckIn(CheckIn checkin,int id) //ne radi
+        {
+            if (ModelState.IsValid)
+            {
+               
+                var edit = entities.CheckIns.SingleOrDefault(le => le.BrojCheckIn == id);
+                var edit1 = entities.Putniks.SingleOrDefault(le => le.BrojPasosa == checkin.BrojPasosa);
+                var edit2 = entities.Rezervacijas.SingleOrDefault(le => le.SifraRezervacije == checkin.SifraRezervacije);
 
 
-                    checkin.BrojCheckIn = id;
+                //edit.BrojCheckIn = checkin.BrojCheckIn;
+                edit2.SifraRezervacije =checkin.SifraRezervacije;
+                edit1.BrojPasosa = checkin.BrojPasosa;
+                //edit.Vreme = DateTime.Now.ToString("h:mm:ss tt");
+
+                //ViewData["Rezervacija"] = entities.Rezervacijas.ToList();
                 
+
+                entities.SaveChanges();
+                return RedirectToAction("SviCheckIn");
+            }
+            else
+            {
+                return View("IzmeniCheckIn", checkin);
+            }
+        }//izmeniCheckIn
+
+
+        [Authorize]
+        public ActionResult Otkazi(int id)
+        {
+            return View(entities.CheckIns.Where(x => x.BrojCheckIn == id).FirstOrDefault());
+        }
+
+
+        [HttpPost]
+        public ActionResult Otkazi(int id,FormCollection collection) 
+        {
+            try
+            {
+                CheckIn checkin = entities.CheckIns.Where(x => x.BrojCheckIn == id).FirstOrDefault();
                 entities.CheckIns.Remove(checkin);
                 entities.SaveChanges();
-            
+                return RedirectToAction("SviCheckIn");
+            }catch (Exception ex)
+            {
+                return RedirectToAction("SviCheckIn");
+            }
 
-            return View(UzmiSveCheckIn());
+
         }//otkazi
 
     }//class

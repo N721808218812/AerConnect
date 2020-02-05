@@ -1,12 +1,14 @@
 ﻿@model IEnumerable<AerConnect.Models.CheckIn>
 
 @{
-    ViewBag.Title = "UspesanCheckIn";
+    ViewBag.Title = "SviCheckIn";
 }
 
-<h2>UspesanCheckIn</h2>
+<h2>SviCheckIn</h2>
 
-
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 <table class="table">
     <tr>
         <th>
@@ -39,8 +41,9 @@
             @Html.DisplayFor(modelItem => item.Vreme)
         </td>
         <td>
-            @Html.ActionLink("Izmeni", "IzmeniCheckIn", new {  id=item.BrojCheckIn  }) |           
-            @Html.ActionLink("Otkazi", "Otkazi", new { id=item.BrojCheckIn  })
+            @Html.ActionLink("Izmeni", "IzmeniCheckIn", new {  id=item.BrojCheckIn  }) |
+           
+            @Html.ActionLink("Otkaži", "Otkazi", new {  id=item.BrojCheckIn  })
         </td>
     </tr>
 }

@@ -323,10 +323,13 @@
     <Content Include="Views\CheckIn\VecObavljenCheckIn.cshtml" />
     <Content Include="Views\Reservation\Rezervacija.cshtml" />
     <Content Include="Views\CheckIn\EvidentiranaZalba.cshtml" />
-    <Content Include="Views\CheckIn\UspesanCheckIn.cshtml" />
     <Content Include="Views\Reservation\Rezervacija.cshtml" />
     <Content Include="Views\Flight\Edit.cshtml" />
     <Content Include="Views\Flight\Delete.cshtml" />
+    <Content Include="Views\CheckIn\IzmeniCheckIn.cshtml" />
+    <Content Include="Views\CheckIn\SviCheckIn.cshtml" />
+    <Content Include="Views\CheckIn\Uspesno.cshtml" />
+    <Content Include="Views\CheckIn\Otkazi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
