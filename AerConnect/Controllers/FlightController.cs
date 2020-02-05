@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -80,5 +79,37 @@ namespace AerConnect.Controllers
             }
             return lista;
         }
+
+        public ActionResult Edit(int id)
+        {
+            Let l = entites.Lets.SingleOrDefault(let => let.SifraLeta == id);
+
+            return View(l);
+        }
+        [HttpPost]
+        public ActionResult Edit(Let l)
+        {
+            if (ModelState.IsValid)
+            {
+                var edit = entites.Lets.SingleOrDefault(le => le.SifraLeta == l.SifraLeta);
+                edit.SifraLeta = l.SifraLeta;
+                edit.DestinacijaDo = l.DestinacijaDo;
+                edit.DestinacijaOd = l.DestinacijaOd;
+                edit.DatumPolaska = l.DatumPolaska;
+                edit.DatumPovratka = l.DatumPovratka;
+
+                entites.SaveChanges();
+                return RedirectToAction("SviLetovi", new
+                {
+                    id = l.SifraLeta
+                });
+            }else
+            {
+                return View("Edit", l);
+            }
+        }
+
+    
+
     }
 }

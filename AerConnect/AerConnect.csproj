@@ -320,7 +320,16 @@
     <Content Include="Views\CheckIn\NePostojiPutnik.cshtml" />
     <Content Include="Views\Shared\PostojeciPutnik.cshtml" />
     <Content Include="Views\CheckIn\EvidentirajZalbu.cshtml" />
+    <Content Include="Views\CheckIn\VecObavljenCheckIn.cshtml" />
     <Content Include="Views\Reservation\Rezervacija.cshtml" />
+    <Content Include="Views\CheckIn\EvidentiranaZalba.cshtml" />
+    <Content Include="Views\Reservation\Rezervacija.cshtml" />
+    <Content Include="Views\Flight\Edit.cshtml" />
+    <Content Include="Views\Flight\Delete.cshtml" />
+    <Content Include="Views\CheckIn\IzmeniCheckIn.cshtml" />
+    <Content Include="Views\CheckIn\SviCheckIn.cshtml" />
+    <Content Include="Views\CheckIn\Uspesno.cshtml" />
+    <Content Include="Views\CheckIn\Otkazi.cshtml" />
     <Content Include="Views\Reservation\SveRezervacije.cshtml" />
     <Content Include="Views\Reservation\DeleteReservation.cshtml" />
     <Content Include="Views\Reservation\UploadSuccesfullReservation.cshtml" />

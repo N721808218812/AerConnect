@@ -1,0 +1,64 @@
+﻿@model AerConnect.Models.Let
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Let</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SifraLeta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SifraLeta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DestinacijaOd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DestinacijaOd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DestinacijaDo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DestinacijaDo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatumPolaska)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatumPolaska)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatumPovratka)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatumPovratka)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
