@@ -16,7 +16,7 @@ namespace AerConnect.Models
     public partial class Ljubimac
     {
         [Display(Name = "Broj čipa")]
-        [RegularExpression("([0-9]{6,10})", ErrorMessage = "Broj čipa mora biti u numerickom formatu *******")]
+        [RegularExpression("([0-9]{1,})", ErrorMessage = "Broj čipa mora biti u numerickom formatu *******")]
         public int BrojCipa { get; set; }
 
         [Display(Name = "Broj pasoša")]
