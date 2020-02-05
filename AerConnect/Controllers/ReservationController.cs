@@ -32,7 +32,7 @@ namespace AerConnect.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Rezervacija(Rezervacija rezervacija,int id)
+        public ActionResult Rezervacija(Rezervacija rezervacija, int id)
         {
             if (ModelState.IsValid)
             {
@@ -57,9 +57,9 @@ namespace AerConnect.Controllers
             }
             else
             {
-                return View("SveRezervacije",rezervacija);
+                return View("SveRezervacije", rezervacija);
             }
-            
+
         }
         public ActionResult SveRezervacije()
         {
@@ -105,9 +105,42 @@ namespace AerConnect.Controllers
             return RedirectToAction("SveRezervacije");
         }
 
+        public ActionResult RezervacijaLjubimac()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RezervacijaLjubimac(Ljubimac ljubimac)
+        {
+            if (ModelState.IsValid)
+            {
+                //var id = entities1.Rezervacijas.FirstOrDefault(l => l.SifraLeta == l.Let.SifraLeta);
+                Ljubimac rez = new Ljubimac()
+                {
+                    Tezina = ljubimac.Tezina,
+                    BrojCipa = ljubimac.BrojCipa,
+                    BrojPasosa = ljubimac.BrojPasosa,
+                    Rasa = ljubimac.Rasa,
+                    Ime = ljubimac.Rasa,
+                };
+                if (entities1.Rezervacijas.Any(L => L.BrojCipa.Equals(ljubimac.BrojPasosa)))
+                {
+                    entities1.Ljubimacs.Add(rez);
+                    entities1.SaveChanges();
+                    return View("RezervacijaLjubimac");
+                }
+                else
+                {
+                    return View("PostojecaSifraReservacija");
+                }
+            }
+            else
+            {
+                return View("SveRezervacije", ljubimac);
+            }
 
-
+        }
     }
-
 }

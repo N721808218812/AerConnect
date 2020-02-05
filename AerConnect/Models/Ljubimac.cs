@@ -34,7 +34,7 @@ namespace AerConnect.Models
         public string Rasa { get; set; }
 
         [Display(Name = "Težina")]
-        [RegularExpression("([0-9]{6,10})", ErrorMessage = "Težina ljubimca mora biti u numerickom formatu *******")]
+        [RegularExpression("([0-9]{1,})", ErrorMessage = "Težina ljubimca mora biti u numerickom formatu *******")]
         public int Tezina { get; set; }
 
         public virtual Putnik Putnik { get; set; }

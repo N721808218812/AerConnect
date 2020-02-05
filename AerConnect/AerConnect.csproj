@@ -334,6 +334,7 @@
     <Content Include="Views\Reservation\DeleteReservation.cshtml" />
     <Content Include="Views\Reservation\UploadSuccesfullReservation.cshtml" />
     <Content Include="Views\Reservation\PostojecaSifraReservacija.cshtml" />
+    <Content Include="Views\Reservation\RezervacijaLjubimac.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
