@@ -131,23 +131,13 @@ namespace AerConnect.Controllers
         }
 
         [HttpPost]
-        public ActionResult IzmeniCheckIn(CheckIn checkin,int id) //ne radi
+        public ActionResult IzmeniCheckIn(CheckIn checkin) //ne radi
         {
             if (ModelState.IsValid)
             {
                
-                var edit = entities.CheckIns.SingleOrDefault(le => le.BrojCheckIn == id);
-                var edit1 = entities.Putniks.SingleOrDefault(le => le.BrojPasosa == checkin.BrojPasosa);
-                var edit2 = entities.Rezervacijas.SingleOrDefault(le => le.SifraRezervacije == checkin.SifraRezervacije);
-
-
-                //edit.BrojCheckIn = checkin.BrojCheckIn;
-                edit2.SifraRezervacije =checkin.SifraRezervacije;
-                edit1.BrojPasosa = checkin.BrojPasosa;
-                //edit.Vreme = DateTime.Now.ToString("h:mm:ss tt");
-
-                //ViewData["Rezervacija"] = entities.Rezervacijas.ToList();
-                
+                var edit = entities.CheckIns.Where(le => le.BrojCheckIn == checkin.BrojCheckIn).FirstOrDefault();
+                edit.Vreme = DateTime.Now.ToString("h:mm:ss tt");                
 
                 entities.SaveChanges();
                 return RedirectToAction("SviCheckIn");
