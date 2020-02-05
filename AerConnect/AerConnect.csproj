@@ -172,6 +172,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\PassengerController.cs" />
     <Compile Include="Models\AspNetRole.cs">
       <DependentUpon>AvioKompanija.tt</DependentUpon>
     </Compile>
@@ -338,6 +339,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\images\" />
+    <Folder Include="Models\View Model\" />
+    <Folder Include="Views\Passenger\" />
     <Folder Include="Views\Ticket\" />
   </ItemGroup>
   <ItemGroup>
