@@ -19,6 +19,7 @@ namespace AerConnect.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int SifraRezervacije { get; set; }
 
+
         public string Vreme { get; set; }
 
 
@@ -33,7 +34,7 @@ namespace AerConnect.Models
         public int SifraLeta { get; set; }
 
         [Display(Name = "Broj čipa")]
-        [RegularExpression("([0-9]{6,10})", ErrorMessage = "Broj čipa mora biti u numerickom formatu *******")]
+        [RegularExpression("([0-9]{1,})", ErrorMessage = "Broj čipa mora biti u numerickom formatu *******")]
         public Nullable<int> BrojCipa { get; set; }
 
 

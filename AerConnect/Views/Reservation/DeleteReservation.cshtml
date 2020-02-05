@@ -1,0 +1,64 @@
+﻿@model AerConnect.Models.Rezervacija
+
+@{
+    ViewBag.Title = "DeleteReservation";
+}
+
+<h2>DeleteReservation</h2>
+
+<h3>Da li ste sigurni da zelite da obrisete Vasu rezervaciju?</h3>
+<div>
+    <h4>Rezervacija</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SifraRezervacije)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SifraRezervacije)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vreme)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vreme)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrojPasosa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrojPasosa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SifraLeta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SifraLeta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrojCipa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrojCipa)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "SveRezervacije")
+        </div>
+    }
+</div>

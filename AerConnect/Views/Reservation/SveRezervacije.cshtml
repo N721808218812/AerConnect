@@ -1,0 +1,51 @@
+﻿@model  IEnumerable<AerConnect.Models.Rezervacija>
+@{
+    ViewBag.Title = "SveRezervacije";
+}
+
+<h2>SveRezervacije</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SifraRezervacije)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SifraLeta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vreme)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BrojPasosa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BrojCipa)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SifraRezervacije)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SifraLeta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vreme)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BrojPasosa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BrojCipa)
+            </td>
+            <td> 
+                @Html.ActionLink("Obrisite rezervaciju", "DeleteReservation", "Reservation", new { id = item.SifraRezervacije }, null)
+            </td>
+        </tr>
+    }
