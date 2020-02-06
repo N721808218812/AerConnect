@@ -173,6 +173,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\PassengerController.cs" />
+    <Compile Include="Helpers\SearchPassanger.cs" />
     <Compile Include="Models\AspNetRole.cs">
       <DependentUpon>AvioKompanija.tt</DependentUpon>
     </Compile>
@@ -228,6 +229,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\View Model\SearchPassengerViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Putnik.cs">
       <DependentUpon>AvioKompanija.tt</DependentUpon>
@@ -336,12 +338,13 @@
     <Content Include="Views\Reservation\PostojecaSifraReservacija.cshtml" />
     <Content Include="Views\CheckIn\IzmeniCheckIn.cshtml" />
     <Content Include="Views\Reservation\RezervacijaLjubimac.cshtml" />
+    <Content Include="Views\Shared\PretragaPutnika.cshtml" />
+    <Content Include="Views\Passenger\_SearchPutnik.cshtml" />
+    <Content Include="Views\Passenger\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\images\" />
-    <Folder Include="Models\View Model\" />
-    <Folder Include="Views\Passenger\" />
     <Folder Include="Views\Ticket\" />
   </ItemGroup>
   <ItemGroup>

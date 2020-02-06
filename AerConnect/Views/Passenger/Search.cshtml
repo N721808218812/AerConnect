@@ -1,0 +1,58 @@
+﻿
+@model AerConnect.Models.View_Model.SearchPassengerViewModel
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+<h4>Putnik</h4>
+<hr />
+@using (Ajax.BeginForm("SearchList", "Passenger", new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "searchResults" }))
+{
+    <div>
+        <div class="form-group">
+            @Html.LabelFor(j => j.search.BrojPasosa)
+            @Html.TextBoxFor(j => j.search.BrojPasosa, new { @placeholder = "What are you searching for?", @class = "form-control", style = "width:300px" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(j => j.search.Ime)
+            @Html.TextBoxFor(j => j.search.Ime, new { @placeholder = "What are you searching for?", @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(j => j.search.Prezime)
+            @Html.TextBoxFor(j => j.search.Prezime, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(j => j.search.BrojTelefona)
+            @Html.TextBoxFor(j => j.search.BrojTelefona, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(j => j.search.Email)
+            @Html.TextBoxFor(j => j.search.Email, new { @class = "form-control" })
+        </div>
+
+        <div>
+            <br />
+        </div>
+        <input type="submit" class="btn btn-success" name="Submit" value="Submit" />
+    </div>
+
+}
+
+
+
+<div id="searchResults" class="col-md-6">
+
+</div>
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
