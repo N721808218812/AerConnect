@@ -37,28 +37,24 @@ namespace AerConnect.Controllers
         public ActionResult SearchList (SearchPassengerViewModel viewModel)
         {
             var search = viewModel.search;
-            
-            //string BrojPasosa =Convert.ToString( search.BrojPasosa);
-            int  BrojPasosa = search.BrojPasosa;
-            if (BrojPasosa.ToString() == null || BrojPasosa.ToString()=="0")
-            {
-                BrojPasosa = 0;
-            }
-            string Ime = Convert.ToString(search.Ime);
-            string Prezime = Convert.ToString(search.Prezime);
-            //string BrojTelefona =Convert.ToString( search.BrojTelefona);
-            int BrojTelefona = search.BrojTelefona;
-            //return Content(Convert.ToString(BrojTelefona1));
-            string Email = Convert.ToString(search.Email);
 
-            if (BrojPasosa == default(int) && Ime == null &&
-                Prezime == null && BrojTelefona == default(int) && Email == null)
-                return View("PostojeciPutnik");
+            string BrojPasosa = search.BrojPasosa;
+            string Ime = search.Ime;
+            string Prezime = search.Prezime;
+            string BrojTelefona = search.BrojTelefona;
+            string Email = search.Email;
 
-            var searchedPassanger = entities1.Putniks.Where(j => (BrojPasosa!=default(int) ?j.BrojPasosa == BrojPasosa: j.BrojPasosa == j.BrojPasosa) &&
+            if (BrojPasosa == null && Ime == null &&
+                Prezime == null && BrojTelefona == null && Email == null)
+                return View("PostojecaPretraga");
+
+            int Bp = Convert.ToInt32(BrojPasosa);
+            int Bt = Convert.ToInt32(BrojTelefona);
+
+            var searchedPassanger = entities1.Putniks.Where(j => (BrojPasosa!=null ?j.BrojPasosa == Bp: j.BrojPasosa == j.BrojPasosa) &&
                                                 (Ime != null ? j.Ime.StartsWith(Ime) : j.Ime == j.Ime) &&
                                                 (Prezime != null ? j.Prezime.StartsWith(Prezime) : j.Prezime == j.Prezime) &&
-                                                (BrojTelefona != default(int) ? j.BrojTelefona== BrojTelefona : j.BrojTelefona == j.BrojTelefona)).ToList();
+                                                (BrojTelefona != null ? j.BrojTelefona== Bt : j.BrojTelefona == j.BrojTelefona)).ToList();
 
             if (ModelState.IsValid)
             {

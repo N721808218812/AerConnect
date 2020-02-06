@@ -10,7 +10,7 @@ namespace AerConnect.Helpers
     {
         [Display(Name = "Broj Pasosa")]
      
-        public int BrojPasosa { get; set; }
+        public string BrojPasosa { get; set; }
 
        
         [Display(Name = "Ime")]
@@ -23,7 +23,7 @@ namespace AerConnect.Helpers
        
         [Display(Name = "Broj Telefona")]
        
-        public int BrojTelefona { get; set; }
+        public string BrojTelefona { get; set; }
 
         
         [Display(Name = "Email")]

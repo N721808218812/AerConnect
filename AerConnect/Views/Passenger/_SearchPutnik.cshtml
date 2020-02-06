@@ -1,6 +1,6 @@
 ﻿@model AerConnect.Models.View_Model.SearchPassengerViewModel
 
-<div id="searchResults" class="col-md-6">
+<div id="searchResults" class="col-md-8">
   
         @if (!Model.Putniks.Any())
         {
@@ -23,8 +23,7 @@
                             <tr>
                                 <td align="center">@Html.ActionLink(putnici.BrojPasosa + " | " + putnici.Ime + " | " + putnici.Prezime + " | " + putnici.BrojTelefona + " | " + putnici.Email, "Details", new { id = putnici.BrojPasosa })</td>
                                 
-                            </tr>
-                          
+                            </tr>                        
 
                         }
                     </tbody>
@@ -33,4 +32,4 @@
         }
     
 </div>
-
+<link href="~/Content/Site.css" rel="stylesheet" />

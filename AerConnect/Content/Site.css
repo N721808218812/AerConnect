@@ -1,10 +1,11 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-image:url(images/pozadina.jpg);
-    background-repeat:no-repeat;
-    background-size:cover;
- 
+    background-image: url(images/pozadina.jpg);
+    /*background-repeat: no-repeat;*/
+    background-size: cover;
+    background-repeat: repeat-x;
+    
 }
 
 
@@ -27,3 +28,16 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.lista {
+    border: dotted;
+    border-color: #26aabd;
+    border-width: 2px;
+    padding: 20px;
+    margin: 20px 0;
+    /*border-radius: 10px;*/
+    overflow-y: scroll;
+    height: 815px;
+    width: 800px;
+}
+
