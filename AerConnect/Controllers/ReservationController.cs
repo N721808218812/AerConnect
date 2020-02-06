@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Net;
 using System.Data.Entity.Validation;
+using AerConnect.Helpers;
 
 namespace AerConnect.Controllers
 {
@@ -112,24 +113,41 @@ namespace AerConnect.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult RezervacijaLjubimac(Ljubimac ljubimac)
+        public ActionResult RezervacijaLjubimac(LjubimacRez ljubimac)
         {
             if (ModelState.IsValid)
             {
-                //var id = entities1.Rezervacijas.FirstOrDefault(l => l.SifraLeta == l.Let.SifraLeta);
+
+              
                 Ljubimac rez = new Ljubimac()
                 {
                     Tezina = ljubimac.Tezina,
                     BrojCipa = ljubimac.BrojCipa,
                     BrojPasosa = ljubimac.BrojPasosa,
                     Rasa = ljubimac.Rasa,
-                    Ime = ljubimac.Rasa,
+                    Ime = ljubimac.Ime,
                 };
-                if (entities1.Rezervacijas.Any(L => L.BrojCipa.Equals(ljubimac.BrojPasosa)))
+                if (entities1.Rezervacijas.Any(L => L.BrojPasosa.Equals(ljubimac.BrojPasosa)))
                 {
-                    entities1.Ljubimacs.Add(rez);
-                    entities1.SaveChanges();
-                    return View("RezervacijaLjubimac");
+                    if (entities1.Rezervacijas.Any(L => L.BrojCipa==(ljubimac.BrojCipa)))
+                    {
+                        return View("Again");
+                    }
+
+                        Rezervacija promena = entities1.Rezervacijas.Where(p => p.SifraRezervacije == ljubimac.SifraRezervacije).FirstOrDefault();
+                    if (promena == null)
+                    {
+                        return View("WrongReservationPet");
+                    }
+                    else
+                    {
+                        promena.BrojCipa = ljubimac.BrojCipa;
+                        entities1.SaveChanges();
+                        entities1.Ljubimacs.Add(rez);
+                        entities1.SaveChanges();
+
+                        return View("SuccessfullReservationPet");
+                    }
                 }
                 else
                 {

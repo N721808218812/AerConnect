@@ -173,6 +173,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\PassengerController.cs" />
+    <Compile Include="Helpers\LjubimacRez.cs" />
     <Compile Include="Helpers\SearchPassanger.cs" />
     <Compile Include="Models\AspNetRole.cs">
       <DependentUpon>AvioKompanija.tt</DependentUpon>
@@ -281,7 +282,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -337,10 +340,13 @@
     <Content Include="Views\Reservation\UploadSuccesfullReservation.cshtml" />
     <Content Include="Views\Reservation\PostojecaSifraReservacija.cshtml" />
     <Content Include="Views\CheckIn\IzmeniCheckIn.cshtml" />
-    <Content Include="Views\Reservation\RezervacijaLjubimac.cshtml" />
     <Content Include="Views\Shared\PretragaPutnika.cshtml" />
     <Content Include="Views\Passenger\_SearchPutnik.cshtml" />
     <Content Include="Views\Passenger\Search.cshtml" />
+    <Content Include="Views\Reservation\RezervacijaLjubimac.cshtml" />
+    <Content Include="Views\Reservation\SuccessfullReservationPet.cshtml" />
+    <Content Include="Views\Reservation\WrongReservationPet.cshtml" />
+    <Content Include="Views\Reservation\Again.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
