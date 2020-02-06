@@ -343,6 +343,7 @@
     <Content Include="Views\Shared\PretragaPutnika.cshtml" />
     <Content Include="Views\Passenger\_SearchPutnik.cshtml" />
     <Content Include="Views\Passenger\Search.cshtml" />
+    <Content Include="Views\Shared\PostojecaPretraga.cshtml" />
     <Content Include="Views\Reservation\RezervacijaLjubimac.cshtml" />
     <Content Include="Views\Reservation\SuccessfullReservationPet.cshtml" />
     <Content Include="Views\Reservation\WrongReservationPet.cshtml" />
