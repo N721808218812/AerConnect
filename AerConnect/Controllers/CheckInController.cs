@@ -101,7 +101,7 @@ namespace AerConnect.Controllers
                 return View("EvidentirajZalbu", zalba);
             }
         }//evidentirajZalbu
-
+        [Authorize]
         public ActionResult SviCheckIn()
         {
             return View(UzmiSveCheckIn());
@@ -165,7 +165,7 @@ namespace AerConnect.Controllers
                 entities.CheckIns.Remove(checkin);
                 entities.SaveChanges();
                 return RedirectToAction("SviCheckIn");
-            }catch (Exception ex)
+            }catch 
             {
                 return RedirectToAction("SviCheckIn");
             }
