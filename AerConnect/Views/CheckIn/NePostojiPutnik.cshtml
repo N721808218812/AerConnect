@@ -2,12 +2,19 @@
 @{
     ViewBag.Title = "NePostojiPutnik";
 }
-
-<h2>Ne postoji putnik u bazi sa unetim parametrima</h2>
+<center>
+    <div class="poruka">
+        <p>
+            <h2>Ne postoji putnik u bazi sa unetim podacima</h2>
+            <h3>Molimo unesite ispravne podatke</h3>
+        </p>
+    </div>
+</center>
 
 <script>
-window.setTimeout(function(){
-    window.location.href = 'http://localhost:54789';
-}, 2000);
+    window.setTimeout(function () {
+        window.history.back();
+    }, 3000);
 </script>
+<link href="~/Content/PorukeCSS.css" rel="stylesheet" />
 

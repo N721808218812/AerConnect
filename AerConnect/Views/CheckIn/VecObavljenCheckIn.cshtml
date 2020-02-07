@@ -2,12 +2,19 @@
 @{
     ViewBag.Title = "VecObavljenCheckIn";
 }
-
-<h2>Vec ste obavili check in</h2>
+<center>
+    <div class="poruka">
+        <p>
+            <h2>Već ste obavili check-in</h2>
+        </p>
+    </div>
+</center>
 
 <script>
-window.setTimeout(function(){
-    window.location.href = 'http://localhost:63817/checkin/checkin';
-}, 1000);
+    window.setTimeout(function () {
+        window.history.back();
+    }, 1000);
 </script>
+<link href="~/Content/PorukeCSS.css" rel="stylesheet" />
+
 
