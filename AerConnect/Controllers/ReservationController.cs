@@ -25,7 +25,7 @@ namespace AerConnect.Controllers
         {
             return View();
         }
-
+        [Authorize]
         public ActionResult Rezervacija()
         {
             return View();
@@ -164,7 +164,7 @@ namespace AerConnect.Controllers
             }
             else
             {
-                return View("SveRezervacije", ljubimac);
+                return View("RezervacijaLjubimac");
             }
 
         }
