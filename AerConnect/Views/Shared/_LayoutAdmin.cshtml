@@ -24,10 +24,9 @@
                     <li>@Html.ActionLink("Lista letova", "SviLetovi", "Flight")</li>
                     <li>@Html.ActionLink("Obavi Check in", "CheckIn", "CheckIn")</li>
                     <li>@Html.ActionLink("Pregled svih Check-in ", "SviCheckIn", "CheckIn")</li>
-                    <br />
                     <li>@Html.ActionLink("Napiši komentar", "EvidentirajZalbu", "CheckIn")</li>
                     <li>@Html.ActionLink("Kreiraj Let", "KreirajLet", "Flight")</li>
-                    <li>@Html.ActionLink("Pretrazi putnika", "Search", "Passenger")</li>
+                    <li>@Html.ActionLink("Pretraži putnika", "Search", "Passenger")</li>
 
 
 
@@ -38,8 +37,8 @@
         </div>
     </div>
     <div class="container body-content">
-        @RenderBody()
-        @*<hr />*@
+            @RenderBody()
+            @*<hr />*@
         <footer>
             @*<p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>*@
         </footer>
