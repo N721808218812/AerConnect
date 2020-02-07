@@ -62,6 +62,7 @@ namespace AerConnect.Controllers
             }
 
         }
+
         public ActionResult SveRezervacije()
         {
             if (this.User.IsInRole("Radnik"))
@@ -126,8 +127,6 @@ namespace AerConnect.Controllers
         {
             if (ModelState.IsValid)
             {
-
-              
                 Ljubimac rez = new Ljubimac()
                 {
                     Tezina = ljubimac.Tezina,
@@ -143,7 +142,7 @@ namespace AerConnect.Controllers
                         return View("Again");
                     }
 
-                        Rezervacija promena = entities1.Rezervacijas.Where(p => p.SifraRezervacije == ljubimac.SifraRezervacije).FirstOrDefault();
+                    Rezervacija promena = entities1.Rezervacijas.Where(p => p.SifraRezervacije == ljubimac.SifraRezervacije).FirstOrDefault();
                     if (promena == null)
                     {
                         return View("WrongReservationPet");
