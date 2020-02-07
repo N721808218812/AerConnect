@@ -65,7 +65,14 @@ namespace AerConnect.Controllers
 
         public ActionResult SveRezervacije()
         {
-            return View(UzmiSveRezervacije());
+            if (this.User.IsInRole("Radnik"))
+            {
+                return View("SveRezervacije", UzmiSveRezervacije());
+            }
+            else
+            {
+                return View("SveRezervacijeKorisnik",UzmiSveRezervacije());
+            }
         }
         public IEnumerable<Rezervacija> UzmiSveRezervacije()
         {
@@ -82,6 +89,8 @@ namespace AerConnect.Controllers
             }
             return rezervacije;
         }
+        [Authorize(Roles = "Radnik")]
+        [Authorize(Roles = "Radnik")]
         public ActionResult DeleteReservation(int? id)
         {
             if (id == null)

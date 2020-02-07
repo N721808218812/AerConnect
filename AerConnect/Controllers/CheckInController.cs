@@ -101,11 +101,11 @@ namespace AerConnect.Controllers
                 return View("EvidentirajZalbu", zalba);
             }
         }//evidentirajZalbu
-
+        [Authorize]
         public ActionResult SviCheckIn()
         {
             return View(UzmiSveCheckIn());
-        }
+        }//svicheckin
 
         [Authorize]
         public IEnumerable<CheckIn> UzmiSveCheckIn()
@@ -128,7 +128,7 @@ namespace AerConnect.Controllers
         {
 
             return View(entities.CheckIns.Where(x=>x.BrojCheckIn==id).FirstOrDefault());
-        }
+        }//izmenicheckin
 
         [HttpPost]
         public ActionResult IzmeniCheckIn(CheckIn checkin) //ne radi
@@ -153,7 +153,7 @@ namespace AerConnect.Controllers
         public ActionResult Otkazi(int id)
         {
             return View(entities.CheckIns.Where(x => x.BrojCheckIn == id).FirstOrDefault());
-        }
+        }//otkazi
 
 
         [HttpPost]
@@ -165,7 +165,7 @@ namespace AerConnect.Controllers
                 entities.CheckIns.Remove(checkin);
                 entities.SaveChanges();
                 return RedirectToAction("SviCheckIn");
-            }catch (Exception ex)
+            }catch 
             {
                 return RedirectToAction("SviCheckIn");
             }

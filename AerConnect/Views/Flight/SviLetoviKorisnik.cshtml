@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "SviLetovi";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Svi Letovi</h2>
@@ -45,8 +45,7 @@
                 @Html.DisplayFor(modelItem => item.DatumPovratka)
             </td>
             <td>
-                @Html.ActionLink("Promeni", "Edit", new { id = item.SifraLeta }, null) |
-                @Html.ActionLink("Obrisi", "Delete", new { id = item.SifraLeta }) |
+              
                 @Html.ActionLink("Rezervisi Kartu", "Rezervacija", "Reservation", new { id = item.SifraLeta }, null)
             </td>
         </tr>

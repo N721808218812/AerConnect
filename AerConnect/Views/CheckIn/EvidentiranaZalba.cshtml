@@ -2,12 +2,19 @@
 @{
     ViewBag.Title = "EvidentiranaZalba";
 }
-
-<h2>Vasa žalba je uspešno evidentirana!</h2>
+<center>
+    <div class="poruka">
+        <p >
+            <h2>Vaša žalba je uspešno evidentirana!</h2>
+            <h3>Sve Vaše primedbe ćemo pokušati da ispravimo.</h3>
+            <h4>Hvala na izdvojenom vremenu!</h4>
+        </p>
+    </div>
+</center>
 
 <script>
-window.setTimeout(function(){
-    window.location.href = 'http://localhost:63817';
-}, 1000);
+    window.setTimeout(function () {
+        window.location.href = 'http://localhost:63817';
+    }, 3000);
 </script>
-
+<link href="~/Content/PorukeCSS.css" rel="stylesheet" />

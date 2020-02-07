@@ -249,6 +249,7 @@
     <Content Include="Content\ShowFlights.css" />
     <Content Include="Content\SveRezervacije.css" />
     <Content Include="Content\UspesnoRezervisano.css" />
+    <Content Include="Content\PorukeCSS.css" />
     <Content Include="Models\AvioKompanija.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>AvioKompanija.edmx</DependentUpon>
@@ -356,6 +357,10 @@
     <Content Include="Views\Reservation\SuccessfullReservationPet.cshtml" />
     <Content Include="Views\Reservation\WrongReservationPet.cshtml" />
     <Content Include="Views\Reservation\Again.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Flight\SviLetoviKorisnik.cshtml" />
+    <Content Include="Views\Reservation\SveRezervacijeKorisnik.cshtml" />
+    <Content Include="Views\CheckIn\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
