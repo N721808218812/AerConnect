@@ -4,11 +4,11 @@
     ViewBag.Title = "Otkazi";
 }
 
-<h2>Otkazi</h2>
+<h2>Otkaži check-in</h2>
 
-<h3>Da li ste sigurni da želite otkazati check in?</h3>
+<h3>Da li ste sigurni da želite otkazati check-in?</h3>
 <div>
-    <h4>Otkaži check in</h4>
+    
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -49,8 +49,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Otkaži check in" class="btn btn-default" /> |
+            @Html.ActionLink("Nazad na listu svih", "SviCheckIn")
         </div>
     }
 </div>
