@@ -5,8 +5,7 @@
     ViewBag.Title = "Search";
 }
 
-<h2>Search</h2>
-<h4>Putnik</h4>
+<h2>Pretraga putnika</h2>
 <hr />
 @using (Ajax.BeginForm("SearchList", "Passenger", new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "searchResults" }))
 {
@@ -38,7 +37,7 @@
         <div>
             <br />
         </div>
-        <input type="submit" class="btn btn-success" name="Submit" value="Submit" />
+        <input type="submit" class="btn btn-success" name="Submit" value="Pretraži" />
 
 
 
@@ -50,9 +49,6 @@
 
 
 }
-
-
-
 
 
 <script src="~/Scripts/jquery-3.3.1.js"></script>
