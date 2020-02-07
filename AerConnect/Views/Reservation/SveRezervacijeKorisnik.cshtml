@@ -1,7 +1,7 @@
 ﻿@model  IEnumerable<AerConnect.Models.Rezervacija>
 @{
-    ViewBag.Title = "SveRezervacije";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.Title = "SveRezervacijeKorisnik";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>SveRezervacije</h2>
@@ -45,9 +45,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.BrojCipa)
             </td>
-            <td>
-                @Html.ActionLink("Obrisite rezervaciju", "DeleteReservation", "Reservation", new { id = item.SifraRezervacije }, null)
-            </td>
+           
         </tr>
         <div id="routeInfo"></div>
 

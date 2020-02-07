@@ -244,6 +244,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\ErrorLoading.css" />
+    <Content Include="Content\GreskaRez.css" />
+    <Content Include="Content\ShowFlights.css" />
+    <Content Include="Content\UspesnoRezervisano.css" />
     <Content Include="Content\PorukeCSS.css" />
     <Content Include="Models\AvioKompanija.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -273,6 +277,8 @@
       <DependentUpon>AvioKompanija.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\PostojecaSifraRezervacija.js" />
+    <Content Include="Scripts\SviLetovi.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -283,6 +289,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\UploadSuccesfullReservation.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -349,6 +356,9 @@
     <Content Include="Views\Reservation\SuccessfullReservationPet.cshtml" />
     <Content Include="Views\Reservation\WrongReservationPet.cshtml" />
     <Content Include="Views\Reservation\Again.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Flight\SviLetoviKorisnik.cshtml" />
+    <Content Include="Views\Reservation\SveRezervacijeKorisnik.cshtml" />
     <Content Include="Views\CheckIn\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

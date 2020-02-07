@@ -62,7 +62,14 @@ namespace AerConnect.Controllers
 
         public ActionResult SviLetovi()
         {
-            return View(UzmiSveLetove());
+            if (this.User.IsInRole("Radnik"))
+            {
+                return View("SviLetovi", UzmiSveLetove());
+            }
+            else
+            {
+                return View("SviLetoviKorisnik",UzmiSveLetove());
+            }
         }
         public IEnumerable <Let> UzmiSveLetove()
         {
@@ -79,7 +86,7 @@ namespace AerConnect.Controllers
             }
             return lista;
         }
-
+        [Authorize(Roles = "Radnik")]
         public ActionResult Edit(int id)
         {
             Let l = entites.Lets.SingleOrDefault(let => let.SifraLeta == id);
