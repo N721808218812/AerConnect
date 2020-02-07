@@ -22,7 +22,7 @@ namespace AerConnect.Controllers
         {
             return View();
         }
-
+        [Authorize(Roles = "Radnik")]
         public ActionResult Search()
         {
             return View(new SearchPassengerViewModel
