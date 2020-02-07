@@ -247,6 +247,7 @@
     <Content Include="Content\ErrorLoading.css" />
     <Content Include="Content\GreskaRez.css" />
     <Content Include="Content\ShowFlights.css" />
+    <Content Include="Content\SveRezervacije.css" />
     <Content Include="Content\UspesnoRezervisano.css" />
     <Content Include="Models\AvioKompanija.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
