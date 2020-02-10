@@ -244,6 +244,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\AllReservations.css" />
     <Content Include="Content\ErrorLoading.css" />
     <Content Include="Content\GreskaRez.css" />
     <Content Include="Content\ShowFlights.css" />

@@ -21,8 +21,8 @@
                         @foreach (var putnici in Model.Putniks)
                         {
                             <tr>
-                                <td align="center">@Html.ActionLink(putnici.BrojPasosa + " | " + putnici.Ime + " | " + putnici.Prezime + " | " + putnici.BrojTelefona + " | " + putnici.Email, new { id = putnici.BrojPasosa })</td>
                                 
+                                <td align="center">@Html.ActionLink(putnici.BrojPasosa + " | " + putnici.Ime + " | " + putnici.Prezime + " | " + putnici.BrojTelefona + " | " + putnici.Email,"SviLetovi","Flight")</td>
                             </tr>                        
 
                         }

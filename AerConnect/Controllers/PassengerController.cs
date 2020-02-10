@@ -50,7 +50,7 @@ namespace AerConnect.Controllers
 
             int Bp = Convert.ToInt32(BrojPasosa);
             int Bt = Convert.ToInt32(BrojTelefona);
-
+         
             var searchedPassanger = entities1.Putniks.Where(j => (BrojPasosa!=null ?j.BrojPasosa == Bp: j.BrojPasosa == j.BrojPasosa) &&
                                                 (Ime != null ? j.Ime.StartsWith(Ime) : j.Ime == j.Ime) &&
                                                 (Prezime != null ? j.Prezime.StartsWith(Prezime) : j.Prezime == j.Prezime) &&
@@ -58,11 +58,13 @@ namespace AerConnect.Controllers
 
             if (ModelState.IsValid)
             {
+               
                 SearchPassengerViewModel vM = new SearchPassengerViewModel
                 {
                     Putniks = searchedPassanger
+                  
                 };
-
+                
                 
                 ModelState.Clear();
 

@@ -24,7 +24,7 @@ namespace AerConnect.Models
             this.Zalbas = new HashSet<Zalba>();
         }
 
-        [[Required(ErrorMessage = "Polje je obavezno")]
+        [Required(ErrorMessage = "Polje je obavezno")]
         [Display(Name = "Broj Pasosa")]
         [RegularExpression("([0-9]{6})", ErrorMessage = "Maksimalna duzina pasosa je 6 karaktera")]
         public int BrojPasosa { get; set; }
