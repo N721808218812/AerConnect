@@ -19,12 +19,12 @@ namespace AerConnect.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int SifraZalbe { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Polje je obavezno!")]
         [Display(Name = "Broj pasoša")]
         [RegularExpression("([0-9]{6,10})", ErrorMessage = "Broj pasoša mora biti u numeričkom formatu ******")]
         public int BrojPasosa { get; set; }
 
-        [Required]        
+        [Required(ErrorMessage = "Polje je obavezno!")]        
         [Display(Name = "Unesite Vaš komentar")]
         [StringLength(300, ErrorMessage = "Minimalna duzina mora da bude najmanje {2} karaktera dugacka ", MinimumLength = 1)]
         public string Komentar { get; set; }
