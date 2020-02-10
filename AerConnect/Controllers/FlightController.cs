@@ -127,32 +127,34 @@ namespace AerConnect.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            try
-            {
+            
                 Let l = entites.Lets.Where(x => x.SifraLeta == id).FirstOrDefault();
-                Rezervacija r = entites.Rezervacijas.Where(p => p.SifraLeta == l.SifraLeta).FirstOrDefault();
-                CheckIn c = entites.CheckIns.Where(a => a.SifraRezervacije == r.SifraRezervacije ).FirstOrDefault();
-
-                if (r != null)
-                {
-                    entites.Rezervacijas.Remove(r);
-                    entites.SaveChanges();
-                }
+            Rezervacija r = entites.Rezervacijas.Where(p => p.SifraLeta == l.SifraLeta).FirstOrDefault();
+            if (r != null)
+            {
+                CheckIn c = entites.CheckIns.Where(a => a.SifraRezervacije == r.SifraRezervacije).FirstOrDefault();
 
                 if (c != null)
                 {
                     entites.CheckIns.Remove(c);
                     entites.SaveChanges();
                 }
+               
+            }
 
-                entites.Lets.Remove(l);
+            if (r != null)
+            {
+                entites.Rezervacijas.Remove(r);
+                entites.SaveChanges();
+            }
+
+
+
+                 entites.Lets.Remove(l);
                 entites.SaveChanges();
                 return RedirectToAction("SviLetovi");
-            }
-            catch (Exception ex)
-            {
-                return Content("Nije moguce obrisati");
-            }
+            
+          
 
 
         }//otkazi
