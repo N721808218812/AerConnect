@@ -3,12 +3,21 @@
     ViewBag.Title = "PostojecaSIfra";
 }
 
-<h1 class="text-success" style="text-align:center"><b>Vec postoji let sa tom šifrom, molim vas pokušajte ponovo.</b></h1>
 
+<center>
+    <div class="poruka">
+        <p>
+            <h2>Već postoji let sa tom šifrom!</h2>
+            <h3>Molimo vas pokušajte ponovo.</h3>
+
+        </p>
+    </div>
+</center>
 
 <script>
 window.setTimeout(function(){
     window.location.href = 'http://localhost:63817/Flight/KreirajLet';
 }, 3000);
 </script>
+<link href="~/Content/PorukeCSS.css" rel="stylesheet" />
 

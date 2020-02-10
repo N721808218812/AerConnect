@@ -3,10 +3,17 @@
     ViewBag.Title = "Again";
 }
 
-<h1 class="text-success" style="text-align:center"><b>Već ste rezervisali kartu za datog ljubimca!</b></h1>
-
+<center>
+    <div class="poruka">
+        <p>
+            <h2>Već ste rezervisali kartu za datog ljubimca!</h2>
+            
+        </p>
+    </div>
+</center>
 <script>
     window.setTimeout(function () {
         window.location.href = 'http://localhost:63817/Reservation/RezervacijaLjubimac';
     }, 3000);
 </script>
+<link href="~/Content/PorukeCSS.css" rel="stylesheet" />
