@@ -99,7 +99,7 @@ namespace AerConnect.Controllers
             if (ModelState.IsValid)
             {
                 var edit = entites.Lets.SingleOrDefault(le => le.SifraLeta == l.SifraLeta);
-                edit.SifraLeta = l.SifraLeta;
+                edit.SifraLeta = l.SifraLeta; 
                 edit.DestinacijaDo = l.DestinacijaDo;
                 edit.DestinacijaOd = l.DestinacijaOd;
                 edit.DatumPolaska = l.DatumPolaska;
