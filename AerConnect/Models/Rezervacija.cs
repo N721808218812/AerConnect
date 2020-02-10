@@ -22,13 +22,13 @@ namespace AerConnect.Models
 
         public string Vreme { get; set; }
 
-
+        [Required(ErrorMessage = "Polje je obavezno")]
         [Display(Name = "Broj pasoša")]
         [RegularExpression("([0-9]{6,10})", ErrorMessage = "Broj pasoša mora biti u numerickom formatu *******")]
         public int BrojPasosa { get; set; }
 
-        [Required]
 
+        [Required(ErrorMessage = "Polje je obavezno")]
         [DataType(DataType.Password)]
         [Display(Name = "Sifra Leta")]
         public int SifraLeta { get; set; }

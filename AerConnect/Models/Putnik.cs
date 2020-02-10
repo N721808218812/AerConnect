@@ -24,32 +24,32 @@ namespace AerConnect.Models
             this.Zalbas = new HashSet<Zalba>();
         }
 
-        [Required]
+        [[Required(ErrorMessage = "Polje je obavezno")]
         [Display(Name = "Broj Pasosa")]
         [RegularExpression("([0-9]{6})", ErrorMessage = "Maksimalna duzina pasosa je 6 karaktera")]
         public int BrojPasosa { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Polje je obavezno")]
         [Display(Name = "Ime")]
         [StringLength(30, ErrorMessage = "Minimalna duzina mora da bude najmanje {2} karaktera dugacka ", MinimumLength = 2)]
         public string Ime { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Polje je obavezno")]
         [Display(Name = "Prezime")]
         [StringLength(30, ErrorMessage = "Minimalna duzina mora da bude najmanje {2} karaktera dugacka ", MinimumLength = 2)]
         public string Prezime { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Polje je obavezno")]
         [Display(Name = "Broj Telefona")]
         [RegularExpression("([06][0-9]{7,8})", ErrorMessage = "Morate uneti format 06*******(*)")]
         public int BrojTelefona { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Polje je obavezno")]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Polje je obavezno")]
         [StringLength(100, ErrorMessage = "Minimalna duzina mora da bude najmanje {2} karaktera dugacka ", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Sifra")]
