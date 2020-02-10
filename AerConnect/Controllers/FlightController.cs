@@ -127,30 +127,36 @@ namespace AerConnect.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            
-                Let l = entites.Lets.Where(x => x.SifraLeta == id).FirstOrDefault();
-            Rezervacija r = entites.Rezervacijas.Where(p => p.SifraLeta == l.SifraLeta).FirstOrDefault();
-            if (r != null)
+            List<Rezervacija> lista = new List<Rezervacija>();
+            Let l = entites.Lets.Where(x => x.SifraLeta == id).FirstOrDefault();
+            lista = entites.Rezervacijas.Where(p => p.SifraLeta == l.SifraLeta).ToList();
+            if (lista != null)
             {
-                CheckIn c = entites.CheckIns.Where(a => a.SifraRezervacije == r.SifraRezervacije).FirstOrDefault();
-
-                if (c != null)
+                foreach (var r in lista)
                 {
-                    entites.CheckIns.Remove(c);
-                    entites.SaveChanges();
+                    CheckIn c = entites.CheckIns.Where(a => a.SifraRezervacije == r.SifraRezervacije).FirstOrDefault();
+
+                    if (c != null)
+                    {
+                        entites.CheckIns.Remove(c);
+                        entites.SaveChanges();
+                    }
                 }
                
             }
 
-            if (r != null)
+            if (lista != null)
             {
-                entites.Rezervacijas.Remove(r);
-                entites.SaveChanges();
+                foreach (var r in lista)
+                {
+                    entites.Rezervacijas.Remove(r);
+                    entites.SaveChanges();
+                }
             }
 
 
 
-                 entites.Lets.Remove(l);
+                entites.Lets.Remove(l);
                 entites.SaveChanges();
                 return RedirectToAction("SviLetovi");
             
