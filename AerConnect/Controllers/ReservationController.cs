@@ -89,7 +89,7 @@ namespace AerConnect.Controllers
             }
             return rezervacije;
         }
-        [Authorize(Roles = "Radnik")]
+        
         [Authorize(Roles = "Radnik")]
         public ActionResult DeleteReservation(int? id)
         {
@@ -111,6 +111,12 @@ namespace AerConnect.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Rezervacija booking = entities1.Rezervacijas.SingleOrDefault(m => m.SifraRezervacije == id);
+            Ljubimac lj = entities1.Ljubimacs.Where(br => br.BrojCipa == booking.BrojCipa).FirstOrDefault();
+            if (lj != null)
+            {
+                entities1.Ljubimacs.Remove(lj);
+                entities1.SaveChanges();
+            }
             entities1.Rezervacijas.Remove(booking);
             entities1.SaveChanges();
             return RedirectToAction("SveRezervacije");
@@ -138,6 +144,10 @@ namespace AerConnect.Controllers
                 if (entities1.Rezervacijas.Any(L => L.BrojPasosa.Equals(ljubimac.BrojPasosa)))
                 {
                     if (entities1.Rezervacijas.Any(L => L.BrojCipa==(ljubimac.BrojCipa)))
+                    {
+                        return View("Again");
+                    }
+                    if (entities1.Ljubimacs.Any(L => L.BrojCipa == (ljubimac.BrojCipa)))
                     {
                         return View("Again");
                     }

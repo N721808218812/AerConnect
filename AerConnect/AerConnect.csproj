@@ -363,6 +363,7 @@
     <Content Include="Views\Flight\SviLetoviKorisnik.cshtml" />
     <Content Include="Views\Reservation\SveRezervacijeKorisnik.cshtml" />
     <Content Include="Views\CheckIn\Index.cshtml" />
+    <Content Include="Views\CheckIn\NePostojiCheckIn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

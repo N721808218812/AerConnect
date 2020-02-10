@@ -91,7 +91,7 @@ namespace AerConnect.Controllers
                 }
                 else
                 {
-                    return View("NePostojiPutnik");
+                    return View("NePostojiCheckIn");
                 }
 
 

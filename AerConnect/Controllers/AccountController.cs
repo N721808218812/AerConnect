@@ -167,14 +167,16 @@ namespace AerConnect.Controllers
             }
             else
             {
-                
+
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
+                var result = new IdentityResult();
                 if (ModelState.IsValid)
                 {
+                    result = await UserManager.CreateAsync(user, model.Password);
                     Putnik putnik = new Putnik
                     {
-                        Email = model.Email,
+                       
+                    Email = model.Email,
                         Password = m.HashPassword(model.Password),
                         Ime = model.Ime,
                         Prezime = model.Prezime,

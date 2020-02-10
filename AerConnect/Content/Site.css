@@ -30,13 +30,13 @@ textarea {
 }
 
 .lista {
-    border: dotted;
+    border: solid black;
     border-color: #26aabd;
     border-width: 2px;
     padding: 20px;
     margin: 20px 0;
     /*border-radius: 10px;*/
-    overflow-y: scroll;
+  
     height: 815px;
     width: 800px;
 }
