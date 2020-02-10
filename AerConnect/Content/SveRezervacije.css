@@ -6,7 +6,9 @@
 .box {
     position: absolute;
     top: calc(50% - 125px);
+    top: -webkit-calc(50% - 125px);
     left: calc(50% - 300px);
+    left: -webkit-calc(50% - 300px);
 }
 
 .ticket {
@@ -223,7 +225,7 @@
     right: 220px;
     font-family: Arial;
     font-size: 18px;
-    color: rgba(255,255,255,0.6);
+    color: #fff;
 }
 
 .jfk {
@@ -251,7 +253,7 @@
 }
 
 .sub-content {
-    background: #e5e5e5;
+    background: #333;
     width: 100%;
     height: 100px;
     position: absolute;
@@ -279,7 +281,7 @@
 }
 
     .name span {
-        color: #555;
+        color: #fff;
         font-size: 17px;
     }
 
@@ -294,7 +296,7 @@
 }
 
     .flight span {
-        color: #555;
+        color: #fff;
         font-size: 17px;
     }
 
@@ -309,7 +311,7 @@
 }
 
     .gate span {
-        color: #555;
+        color: #fff;
         font-size: 17px;
     }
 
@@ -325,7 +327,7 @@
 }
 
     .seat span {
-        color: #555;
+        color: #fff;
         font-size: 17px;
     }
 
@@ -340,7 +342,7 @@
 }
 
     .boardingtime span {
-        color: #555;
+        color: #fff;
         font-size: 17px;
     }
 
