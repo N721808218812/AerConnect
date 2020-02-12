@@ -153,24 +153,25 @@ namespace AerConnect.Controllers
                     entites.SaveChanges();
                 }
             }
-            Ljubimac lj=new Ljubimac();
+            Ljubimac lj = new Ljubimac();
             if (lista != null)
             {
-                foreach(var r in lista)
+                foreach (var r in lista)
                 {
-                  lj = entites.Ljubimacs.Where(br => br.BrojCipa == r.BrojCipa).FirstOrDefault();
+                    lj = entites.Ljubimacs.Where(br => br.BrojCipa == r.BrojCipa).FirstOrDefault();
+                    if (lj != null)
+                    {
+                        entites.Ljubimacs.Remove(lj);
+                        entites.SaveChanges();
+                    }
                 }
             }
-            if (lj != null)
-            {
-                entites.Ljubimacs.Remove(lj);
-                entites.SaveChanges();
-            }
+            
 
 
-                entites.Lets.Remove(l);
-                entites.SaveChanges();
-                return RedirectToAction("SviLetovi");
+            entites.Lets.Remove(l);
+            entites.SaveChanges();
+            return RedirectToAction("SviLetovi");
             
           
 
