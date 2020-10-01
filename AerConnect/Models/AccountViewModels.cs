@@ -48,12 +48,12 @@ namespace AerConnect.Models
 
     public class LoginViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Polje je obavezno!")]
         [Display(Name = "Email")]
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Polje je obavezno!")]
         [DataType(DataType.Password)]
         [Display(Name = "Sifra")]
         public string Password { get; set; }
@@ -64,38 +64,38 @@ namespace AerConnect.Models
 
     public class RegisterViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Polje je obavezno!")]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Polje je obavezno!")]
         [StringLength(100, ErrorMessage = "Minimalna duzina mora da bude najmanje {2} karaktera dugacka ", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Sifra")]
         public string Password { get; set; }
-
+        [Required(ErrorMessage = "Polje je obavezno!")]
         [DataType(DataType.Password)]
         [Display(Name = "Potvrdite sifru")]
         [Compare("Password", ErrorMessage = "Sifra i potvrdjena sifra se ne poklapaju")]
         public string ConfirmPassword { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Polje je obavezno!")]
         [Display(Name ="Broj Pasosa")]
         [RegularExpression("([0-9]{6})",ErrorMessage ="Minimalna duzina pasosa je 6 karaktera")]
         public int BrojPasosa { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Polje je obavezno!")]
         [Display(Name = "Broj Telefona")]
         [RegularExpression("([06][0-9]{7,8})", ErrorMessage = "Morate uneti format 06*******(*)")]
         public int BrojTelefona { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Polje je obavezno!")]
         [Display(Name = "Ime")]
         [StringLength(30, ErrorMessage = "Minimalna duzina mora da bude najmanje {2} karaktera dugacka ", MinimumLength = 2)]
         public string Ime { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Polje je obavezno!")]
         [Display(Name = "Prezime")]
         [StringLength(30, ErrorMessage = "Minimalna duzina mora da bude najmanje {2} karaktera dugacka ", MinimumLength = 2)]
         public string Prezime { get; set; }

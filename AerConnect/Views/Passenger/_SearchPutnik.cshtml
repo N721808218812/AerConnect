@@ -12,7 +12,7 @@
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th align="center">Letovi koje ste pretrazili</th>
+                            <th align="center">Lista putnika</th>
                            
                         </tr>
                     </thead>
@@ -22,7 +22,7 @@
                         {
                             <tr>
                                 
-                                <td align="center">@Html.ActionLink(putnici.BrojPasosa + " | " + putnici.Ime + " | " + putnici.Prezime + " | " + putnici.BrojTelefona + " | " + putnici.Email,"SviLetovi","Flight")</td>
+                                <td align="center">@(putnici.BrojPasosa + " | " + putnici.Ime + " | " + putnici.Prezime + " | " + putnici.BrojTelefona + " | " + putnici.Email)</td>
                             </tr>                        
 
                         }

@@ -27,7 +27,7 @@ namespace AerConnect.Models
 
     public class SetPasswordViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Polje je obavezno!")]
         [StringLength(100, ErrorMessage = "{0 }mora biti najmanje {2} dugačka.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Nova šifra")]
@@ -41,12 +41,12 @@ namespace AerConnect.Models
 
     public class ChangePasswordViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Polje je obavezno!")]
         [DataType(DataType.Password)]
         [Display(Name = "Trenutna šifra")]
         public string OldPassword { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Polje je obavezno!")]
         [StringLength(100, ErrorMessage = "{0 }mora biti najmanje {2} dugačka.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Nova šifra")]

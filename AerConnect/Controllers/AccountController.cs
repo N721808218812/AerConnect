@@ -94,7 +94,7 @@ namespace AerConnect.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", "Neuspešno logovanje.");
                     return View(model);
             }
         }
@@ -160,7 +160,7 @@ namespace AerConnect.Controllers
             CustomPasswordHasher m = new CustomPasswordHasher();
            
            
-            if (entities.Putniks.Any(l => l.BrojPasosa.Equals(model.BrojPasosa)))
+            if (entities.Putniks.Any(l => l.Email.Equals(model.Email)))
             {
 
                 return View("PostojeciPutnik");
